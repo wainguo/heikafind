@@ -105,6 +105,7 @@ class ArticleController extends Controller
         $this->cleanDir($findpDir);
 
         array_push($buildlogs, 'clean old build data in path: '.$findpDir);
+        array_push($buildlogs, 'build: ');
 
         //build new data
         $countPerPage = 20;
@@ -141,11 +142,11 @@ class ArticleController extends Controller
             $this->processImage(basename($article->cover));
             $article->cover = 'images/'.basename($article->cover);
 
-            array_push($buildlogs, 'process cover image: '.basename($article->cover));
+            array_push($buildlogs, '压缩封面图片: '.basename($article->cover));
 
             $result = $this->processImageFromContent($article->content, 'images');
             $article->content = $result['content'];
-            array_push($buildlogs, 'process content images: '.json_encode($result['image_urls']));
+            array_push($buildlogs, '压缩内容图片: '.json_encode($result['image_urls']));
 
             $view = view('find.preview', [
                 'article' => $article,
