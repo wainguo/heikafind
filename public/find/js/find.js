@@ -49,7 +49,7 @@ $(function(){
                 var addstring = '';
                 if(Array.isArray(response.articles)){
                     response.articles.forEach(function (article) {
-                        addstring+='<li><a href="p/'+article.id+'.html"><img src="' + article.cover + '"/></a><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></li>';
+                        addstring+='<li><a href="p/'+article.id+'.html"><img src="p/' + article.cover + '"/></a><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></li>';
                     })
                 }
                 // addstring+='<li><a href="javascript:;"><img src="images/find_b1.jpg"/></a><div class="res-details"><h2>满足您味蕾的八大京城西餐厅</h2><p>带着你的胃和我们一起走进我儿时的的味道吧，我爷爷小的时候，常在这里玩耍！</p></div></li>';
