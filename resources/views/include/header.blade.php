@@ -20,7 +20,7 @@
                 <li><a href="{{url('/edit')}}">录入文章</a></li>
                 <li><a href="{{url('/list')}}">文章列表</a></li>
                 <li><a href="{{url('/prebuild')}}">构建</a></li>
-                <li><a href="{{url('/listpreview')}}" target="_blank">预览</a></li>
+                <li><a href="/find/find.html" target="_blank">预览</a></li>
             </ul>
         </div>
     </div>
