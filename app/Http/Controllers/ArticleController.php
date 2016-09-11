@@ -125,6 +125,21 @@ class ArticleController extends Controller
             'articles' => $articles
         ]);
     }
+
+    //为方便,直接走的get方法
+    public function getDelete($id = null)
+    {
+        if(empty($id)) {
+            return redirect()->back();
+        }
+
+        $article = Article::find($id);
+        if(!empty($article)){
+            $article->delete();
+            return redirect('/list')->with('flash_success', '删除成功');
+        }
+        return redirect('/list');
+    }
     public function getEdit($id = null)
     {
         if(!empty($id)) {

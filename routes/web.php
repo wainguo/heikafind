@@ -25,3 +25,4 @@ Route::get('/preview/{id}', 'ArticleController@previewArticle');
 Route::post('/save', 'ArticleController@postSave');
 Route::post('/cover', 'ArticleController@postImage');
 Route::post('/upload', 'ArticleController@postUploadImage');
+Route::get('/delete/{id}', 'ArticleController@getDelete');

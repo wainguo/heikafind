@@ -27,7 +27,7 @@
                 <td>
                     <a href="{{url('/preview/'.$article->id)}}" class="btn btn-sm btn-default" target="_blank">预览</a>
                     <a href="{{url('/edit/'.$article->id)}}" class="btn btn-sm btn-success" target="_blank">编辑</a>
-                    <a href="{{url('/delete/'.$article->id)}}" class="btn btn-sm btn-danger">删除</a>
+                    <a href="{{url('/delete/'.$article->id)}}" onclick="return confirm('删除后无法恢复,确定要删除吗')" class="btn btn-sm btn-danger">删除</a>
                 </td>
             </tr>
         @endforeach
