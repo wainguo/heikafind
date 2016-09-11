@@ -1,0 +1,2 @@
+git remote add github https://github.com/wainguo/heikafind.git
+git push -u github master
