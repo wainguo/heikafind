@@ -43,8 +43,30 @@ class ArticleController extends Controller
     public function previewArticle($id)
     {
         $article = Article::find($id);
+        $scheme = "heika://refresh";
+        switch ($article->category){
+            case 'restaurant':
+                $scheme = "heika://resDetail?id=".$article->detailId;
+                break;
+            case 'cake':
+                $scheme = "heika://cakeDetail?id=".$article->detailId;
+                break;
+            case 'teaRoom':
+                $scheme = "heika://highteaDetail?id=".$article->detailId;
+                break;
+            case 'bar':
+                $scheme = "heika://barDetail?id=".$article->detailId;
+                break;
+            case 'ticket':
+                $scheme = "heika://showDetail?id=".$article->detailId;
+                break;
+            default:
+                $scheme = "heika://refresh";
+                break;
+        }
         return view('find.preview', [
             'article' => $article,
+            'scheme' => $scheme,
         ]);
     }
     public function prebuild()
@@ -55,9 +77,36 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function cleanDir($dir)
+    {
+        if(empty($dir)){
+            return;
+        }
+        $dh = opendir($dir);
+        while ($file = readdir($dh)) {
+            if($file!="." && $file!="..") {
+                $fullpath = $dir."/".$file;
+                if(!is_dir($fullpath)) {
+                    unlink($fullpath);
+                } else {
+                    $this->cleanDir($fullpath);
+                }
+            }
+        }
+        closedir($dh);
+    }
+
     public function build(Request $request)
     {
         $buildlogs = array();
+
+        //clear old data
+        $findpDir = public_path('find/p');
+        $this->cleanDir($findpDir);
+
+        array_push($buildlogs, 'clean old build data in path: '.$findpDir);
+
+        //build new data
         $countPerPage = 20;
         $findpath = public_path('find');
         $articles = Article::orderBy('created_at', 'desc')->get();
@@ -66,7 +115,6 @@ class ArticleController extends Controller
         $page = 0;
         $pagedArticles = array();
         foreach ($articles as $article){
-
             $scheme = "heika://refresh";
             switch ($article->category){
                 case 'restaurant':
@@ -88,6 +136,17 @@ class ArticleController extends Controller
                     $scheme = "heika://refresh";
                     break;
             }
+
+            //process image
+            $this->processImage(basename($article->cover));
+            $article->cover = 'images/'.basename($article->cover);
+
+            array_push($buildlogs, 'process cover image: '.basename($article->cover));
+
+            $result = $this->processImageFromContent($article->content, 'images');
+            $article->content = $result['content'];
+            array_push($buildlogs, 'process content images: '.json_encode($result['image_urls']));
+
             $view = view('find.preview', [
                 'article' => $article,
                 'scheme' => $scheme,
@@ -283,6 +342,69 @@ class ArticleController extends Controller
 
         $output = "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($callback, '$url', '$errorMessage');</script>";
         return response($output);
+    }
+
+    //图片处理方案写在这里(图片压缩,放缩等处理)
+    //接收文件名, 图片原始存放在/public/storage下, 处理后的图片目标放在/public/find/p/images下
+    public function processImage($fileName)
+    {
+        if(empty($fileName)){
+            return;
+        }
+
+        $file = $this->imageUploadPath.DIRECTORY_SEPARATOR.$fileName;
+        $toFile = public_path('find')."/p/images/".$fileName;
+
+        Image::make($file)->resize(640, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($toFile, 80);
+    }
+
+    // build 时,将文章中的图片拷贝出来到p/images下面
+    public function processImageFromContent($content, $baseUrl)
+    {
+//        $destPath, $baseUrl
+        $imageList = $this->getImageByReg($content);
+        $localBaseUrl = url('');
+        foreach ($imageList as $key => $val) {
+//            print_r($val['src']);
+//            http://localhost:7878/storage/57d413308d9a8.jpeg
+
+            $fileName = basename($val['src']);
+
+//            if ( strpos($val['src'], $localBaseUrl) !== false ) {
+//                $arr = explode('/', $val['src']);
+//                $name = array_pop($arr);
+//                $imageList[$key]['src'] = $name;
+//                continue;
+//            }
+//            $arr = explode('.', $val['src']);
+//            $ext = array_pop($arr);
+//            if (!$ext || !in_array($ext, $this->allowedExtensions)) {
+//                $ext = 'jpg';
+//            }
+//            $name = uniqid().'.'.$ext;
+//            $imageList[$key]['src'] = $name;
+
+            //处理图片, 并将图片放到生成目录的位置
+            $this->processImage($fileName);
+
+            $imageList[$key]['src'] = $fileName;
+        }
+
+        $newImgInfo = $this->replaceImageUrl($imageList, $baseUrl);
+        $newImgTags = $newImgInfo['newImgTags'];
+        $newImgUrls = $newImgInfo['newImgUrls'];
+
+        $patterns = array('/<img\s.*?>/');
+        $callback = function( $matches ) use ( &$newImgTags ) {
+            $matches[0] = array_shift($newImgTags);
+            return $matches[0];
+        };
+        $res = array();
+        $res['content'] = preg_replace_callback($patterns, $callback, $content);
+        $res['image_urls'] = $newImgUrls;
+        return $res;
     }
 
     public function getAndSaveImageFromContent($content, $destPath, $baseUrl)
