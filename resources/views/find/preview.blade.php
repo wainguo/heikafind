@@ -9,7 +9,7 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="expires" content="0">
-    <link rel="stylesheet" type="text/css" href="/css/find.css">
+    <link rel="stylesheet" type="text/css" href="../css/find.css">
 </head>
 <body>
 

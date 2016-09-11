@@ -35,7 +35,7 @@ $(function(){
         pageIsLoading = true;
 
         // 请求的数据文件,一页一个文件, 返回的数据中包括分页信息: 总页数
-        var dataFileUrl = 'data_' + page + '.json';
+        var dataFileUrl = 'p/data_' + page + '.json';
 
 		$.ajax({
 			url: dataFileUrl,

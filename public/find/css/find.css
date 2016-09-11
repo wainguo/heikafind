@@ -1,6 +1,6 @@
 /*---------------------初始化样式--------------------*/
 cite,i,s,b,em{ font-style:normal;font-weight:normal;}
-body,ul,li,p,dl,dt,dd,ol,h1,h2,h3,h4,h5,h6{ margin:0px; padding: 0px;}
+body,ul,li,p,dl,dt,dd,ol,h1,h2,h3,h4,h5,h6,figure{ margin:0px; padding: 0px;}
 h1,h2,h3,h4{ font-weight: normal;}
 input{font-family:'Microsoft YaHei',STXihei,MingLiu;}
 
@@ -102,6 +102,16 @@ a{text-decoration: none}
 	color: #fff;
 	text-align:center;
 	background: #ddae77;
+}
+
+.image-captioned img {
+	width:100%;
+	height:auto;
+}
+
+/*hide ckeditor produced tag*/
+figcaption {
+	display: none;
 }
 
 

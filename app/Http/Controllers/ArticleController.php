@@ -106,7 +106,7 @@ class ArticleController extends Controller
                     'count' => count($articles),
                     'articles' => $pagedArticles
                 );
-                $dataFile = $findpath."/data_".$page.".json";
+                $dataFile = $findpath."/p/data_".$page.".json";
                 file_put_contents($dataFile, json_encode($data));
 
                 array_push($buildlogs, "create list data file: ".$dataFile."<span class='text-success'> success.</span>");
