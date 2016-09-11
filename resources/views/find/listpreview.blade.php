@@ -17,11 +17,13 @@
         <ul>
             @foreach($articles as $article)
             <li>
+                <a href="{{'p/'.$article->id.'.html'}}">
                 <img src="{{$article->cover}}"/>
                 <div class="res-details">
                     <h2>{{$article->title}}</h2>
                     <p>{{$article->description}}</p>
                 </div>
+                </a>
             </li>
             @endforeach
         </ul>

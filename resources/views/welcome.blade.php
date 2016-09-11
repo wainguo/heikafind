@@ -66,22 +66,17 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    黑卡发现频道内容构建
+                    发现频道内容构建
                 </div>
 
                 <div class="links">
-                    <a href="">录入内容</a>
-                    <a href="">构建</a>
-                    <a href="">预览列表</a>
+                    <a href="/edit">录入内容</a>
+                    <a href="{{url('/list')}}">文章列表</a>
+                    <a href="/prebuild">构建</a>
+                    {{--<a href="/listpreview">预览</a>--}}
+                    <a href="/find/find.html">预览</a>
                     {{--<a href="https://forge.laravel.com">Forge</a>--}}
                     {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
                 </div>

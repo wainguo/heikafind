@@ -140,6 +140,10 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+
+        'category'              => '品类',
+        'detailId'              => '知识库ID',
+        'cover'                 => '封面图片',
     ],
 
 ];

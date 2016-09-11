@@ -34,7 +34,7 @@ class ArticleController extends Controller
 //  预览
     public function previewArticleList()
     {
-        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
         return view('find.listpreview', [
             'articles' => $articles,
         ]);
@@ -47,37 +47,75 @@ class ArticleController extends Controller
             'article' => $article,
         ]);
     }
-
-    public function build()
+    public function prebuild()
     {
+        $buildlogs = array();
+        return view('find.buildlog', [
+            'buildlogs' => $buildlogs
+        ]);
+    }
+
+    public function build(Request $request)
+    {
+        $buildlogs = array();
+        $countPerPage = 20;
         $findpath = public_path('find');
-//        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
         $articles = Article::orderBy('created_at', 'desc')->get();
 
         $i = 0;
         $page = 0;
         $pagedArticles = array();
         foreach ($articles as $article){
+
+            $scheme = "heika://refresh";
+            switch ($article->category){
+                case 'restaurant':
+                    $scheme = "heika://resDetail?id=".$article->detailId;
+                    break;
+                case 'cake':
+                    $scheme = "heika://cakeDetail?id=".$article->detailId;
+                    break;
+                case 'teaRoom':
+                    $scheme = "heika://highteaDetail?id=".$article->detailId;
+                    break;
+                case 'bar':
+                    $scheme = "heika://barDetail?id=".$article->detailId;
+                    break;
+                case 'ticket':
+                    $scheme = "heika://showDetail?id=".$article->detailId;
+                    break;
+                default:
+                    $scheme = "heika://refresh";
+                    break;
+            }
             $view = view('find.preview', [
                 'article' => $article,
+                'scheme' => $scheme,
             ]);
             $file = $findpath."/p/".$article->id.".html";
             file_put_contents($file, $view);
+            array_push($buildlogs, "create detail file: ".$file."<span class='text-success'> success.</span>");
+
             array_push($pagedArticles, $article);
             $i += 1;
-            if($i % 20 == 0 || $i == count($articles)-1){
+            if($i % $countPerPage == 0 || $i == count($articles)){
                 $page += 1;
                 $data = array(
-                    'total' => ceil(count($articles)/20),
+                    'totalPages' => ceil(count($articles)/$countPerPage),
                     'currentPage' => $page,
                     'count' => count($articles),
                     'articles' => $pagedArticles
                 );
                 $dataFile = $findpath."/data_".$page.".json";
                 file_put_contents($dataFile, json_encode($data));
+
+                array_push($buildlogs, "create list data file: ".$dataFile."<span class='text-success'> success.</span>");
             }
         }
-//        file_put_contents($file, $articles->toJson());
+
+        return view('find.buildlog', [
+            'buildlogs' => $buildlogs
+        ]);
     }
 
     public function getList()
@@ -99,7 +137,7 @@ class ArticleController extends Controller
         $categories = array(
             "restaurant"=>"餐厅订座",
             "bar"=>"酒吧",
-            "teaRoot"=>"茶点",
+            "teaRoom"=>"茶点",
             "cake"=>"蛋糕",
             "ticket"=>"票务"
         );

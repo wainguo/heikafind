@@ -13,13 +13,13 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">发现频道内容管理</a>
+            <a class="navbar-brand" href="/">发现频道内容管理</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{url('/edit')}}">录入文章</a></li>
+                <li><a href="{{url('/edit')}}">录入文章</a></li>
                 <li><a href="{{url('/list')}}">文章列表</a></li>
-                <li><a href="{{url('/build')}}">构建</a></li>
+                <li><a href="{{url('/prebuild')}}">构建</a></li>
                 <li><a href="{{url('/listpreview')}}" target="_blank">预览</a></li>
             </ul>
         </div>

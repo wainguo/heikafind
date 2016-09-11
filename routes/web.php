@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/list', 'ArticleController@getList');
+Route::get('/prebuild', 'ArticleController@prebuild');
 Route::get('/build', 'ArticleController@build');
 Route::get('/edit', 'ArticleController@getEdit');
 Route::get('/edit/{id}', 'ArticleController@getEdit');

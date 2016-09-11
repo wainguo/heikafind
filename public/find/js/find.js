@@ -11,58 +11,71 @@ $(function(){
 	    $(".find-box ul").html(addstring);	
 	};
 
-	listFill();
+	// listFill();
 
-	var findList = function () {
+    pageIsLoading = false;
+
+    totalPages = 1;
+    currentPage = 0;
+    count = 0;
+
+	var findList = function (page) {
+	    if(!page) page = 1;
+
+        if(pageIsLoading) {
+            console.log('pageIsLoading...');
+            return;
+        }
+
+        if(page > totalPages) {
+            console.log('没有更多数据了');
+            return;
+        }
+
+        pageIsLoading = true;
+
+        // 请求的数据文件,一页一个文件, 返回的数据中包括分页信息: 总页数
+        var dataFileUrl = 'data_' + page + '.json';
+
 		$.ajax({
-			url: 'data_1.json',
+			url: dataFileUrl,
 			type: 'get',
 			dataType: 'json',
-			success: function(res){
-				var detailLists = res.data.dataInfo;
-				if(noTrim(orderLists.gaodeLat) == '' || noTrim(orderLists.gaodeLng) == ''){
-					$('.address').find('.angle-icon').hide();
-				}else{
-					$('.address').find('.angle-icon').show();
-					$('.address').attr('href','/banner/app/v2.8/createMap.html?key='+orderKey)
-				}
-				//初始化数据
-				$.ajax({
-					url: 'api/productshare/detail/'+orderKey+'serviceType='+serviceType,
-					type: 'get',
-					dataType: 'json',
-					success: function(res){
-						if(res.status==0){
-							var detailLists = res.data.dataInfo;
-							//公用的数据：图片，标题，描述，温馨提示
-							var detailPicHtml,detailTitleHtml,detailDecorationHTml,detailTipHtml;
-							//私有数据
-							// 蛋糕：标签，英文名字，甜度，价位，商品详情，电话；
-							// 餐厅：类型人均，特点，图片列表；
-							// 演出:价位，时间；
-							// 酒吧：价格，时间
-							if(serviceType == 'restaurant'){
+			success: function(response){
+			    console.log(response);
+                totalPages = response.totalPages;
+                currentPage = response.currentPage;
+                count = response.count;
+                var addstring = '';
+                if(Array.isArray(response.articles)){
+                    response.articles.forEach(function (article) {
+                        addstring+='<li><a href="p/'+article.id+'.html"><img src="' + article.cover + '"/></a><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></li>';
+                    })
+                }
+                // addstring+='<li><a href="javascript:;"><img src="images/find_b1.jpg"/></a><div class="res-details"><h2>满足您味蕾的八大京城西餐厅</h2><p>带着你的胃和我们一起走进我儿时的的味道吧，我爷爷小的时候，常在这里玩耍！</p></div></li>';
 
-							}
-							if(serviceType == 'tearoom'){
+                $( ".find-box ul" ).append( addstring );
 
-							}
-							if(serviceType == 'bar'){
+                pageIsLoading = false;
 
-							}
-							if(serviceType == 'cake'){
-
-							}
-
-						}else{
-							alert(res.message);
-						}
-					}
-				});
-			}
+                // $(".find-box ul").html(addstring);
+			},
+            error: function (response) {
+                pageIsLoading = false;
+            }
 		});
-	}
-    
+	};
+
+	var loadNextPage = function () {
+	    console.log('currentPage:' + currentPage);
+	    console.log('totalPages:' + totalPages);
+	    console.log('count:' + count);
+        var nextPage = currentPage + 1;
+        findList(nextPage);
+    };
+
+	findList(1);
+
     //绑定上下滑动事件  
     /*$("#list").tap( function () {
     	//超过20条后显示加载图标
@@ -71,5 +84,23 @@ $(function(){
 		}
 
     });*/
+
+    $(window).scroll(function(){
+        var scrollTop = $(this).scrollTop();               //滚动条距离顶部的高度
+        var scrollHeight = $(document).height();           //当前页面的总高度
+        var windowHeight = $(this).height();               //当前可视的页面高度
+
+        if(scrollTop + windowHeight >= scrollHeight){      //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+            $(".load").show().delay(10000).hide();
+
+            loadNextPage();
+
+            // if(currentpage ==2){                           //如果加载ajax达到2次 停止加载
+            //     $(".down_move").hide();                    //提示滚动 图片隐藏
+            //     $(".submit_btn").css("display","block");   //提示可以提交该表单按钮出现。
+            //     return false;                              //如果条件满足 停止运行该判断
+            // }
+        }
+    });
 
 })
