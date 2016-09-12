@@ -108,7 +108,10 @@ class ArticleController extends Controller
         array_push($buildlogs, 'build: ');
 
         //build new data
-        $countPerPage = 20;
+
+        //每页多少条?
+        $countPerPage = 3;
+
         $findpath = public_path('find');
         $articles = Article::orderBy('created_at', 'desc')->get();
 

@@ -2,14 +2,14 @@ $(function(){
 
 	// var lis = $(".find-box ul li");
 	//发现页数据填充
-	var listFill=function(){
-		var addstring = '';
-    	for(var i=0; i< 3; i++){
-    		console.log('===');
-			addstring+='<li><a href="javascript:;"><img src="images/find_b1.jpg"/></a><div class="res-details"><h2>满足您味蕾的八大京城西餐厅</h2><p>带着你的胃和我们一起走进我儿时的的味道吧，我爷爷小的时候，常在这里玩耍！</p></div></li>';
-		}	    
-	    $(".find-box ul").html(addstring);	
-	};
+	// var listFill=function(){
+	// 	var addstring = '';
+    	// for(var i=0; i< 3; i++){
+    	// 	console.log('===');
+	// 		addstring+='<li><a href="javascript:;"><img src="images/find_b1.jpg"/></a><div class="res-details"><h2>满足您味蕾的八大京城西餐厅</h2><p>带着你的胃和我们一起走进我儿时的的味道吧，我爷爷小的时候，常在这里玩耍！</p></div></li>';
+	// 	}
+	//     $(".find-box ul").html(addstring);
+	// };
 
 	// listFill();
 
@@ -52,13 +52,11 @@ $(function(){
                         addstring+='<li><a href="p/'+article.id+'.html"><img src="p/' + article.cover + '"/></a><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></li>';
                     })
                 }
-                // addstring+='<li><a href="javascript:;"><img src="images/find_b1.jpg"/></a><div class="res-details"><h2>满足您味蕾的八大京城西餐厅</h2><p>带着你的胃和我们一起走进我儿时的的味道吧，我爷爷小的时候，常在这里玩耍！</p></div></li>';
 
                 $( ".find-box ul" ).append( addstring );
 
                 pageIsLoading = false;
 
-                // $(".find-box ul").html(addstring);
 			},
             error: function (response) {
                 pageIsLoading = false;
