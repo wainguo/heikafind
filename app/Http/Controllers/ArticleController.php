@@ -166,6 +166,7 @@ class ArticleController extends Controller
                 $data = array(
                     'totalPages' => ceil(count($articles)/$countPerPage),
                     'currentPage' => $page,
+                    'perPage' => $countPerPage,
                     'count' => count($articles),
                     'articles' => $pagedArticles
                 );
