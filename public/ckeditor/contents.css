@@ -112,6 +112,11 @@ span[lang]
 /*guoshengxing modified*/
 figure{ margin:0px; padding: 0px;}
 
+.cke_editable img {
+	width: 100%;
+	height:auto;
+}
+
 figure
 {
 	text-align: center;
@@ -132,6 +137,7 @@ figure > figcaption
 
 figure img {
 	width:100%;
+	height: auto;
 }
 
 a > img {

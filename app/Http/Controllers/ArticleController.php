@@ -98,6 +98,18 @@ class ArticleController extends Controller
 
     public function build(Request $request)
     {
+
+        // $env in test, product
+        $env = $request->input('env');
+        if(empty($env)){
+            $env = 'test';
+        }
+
+        $baseUrl="http://172.16.2.113/banner/app/v2.8/";
+        if($env == "product"){
+            $baseUrl="http://api.m.heika.com/banner/app/v2.8/";
+        }
+
         $buildlogs = array();
 
         //clear old data
@@ -150,6 +162,16 @@ class ArticleController extends Controller
             $result = $this->processImageFromContent($article->content, 'images');
             $article->content = $result['content'];
             array_push($buildlogs, '压缩内容图片: '.json_encode($result['image_urls']));
+
+            //文章地址绝对URL,图片地址绝对URL
+            $articleUrl = $baseUrl.$article->id.".html";
+            $coverUrl = $baseUrl."images/".basename($article->cover);
+
+            $shareScheme = "heika://share?title=".urlencode($article->title).
+                "&shareDescription=".urlencode($article->description)."&url=".$articleUrl."&imgUrl=".$coverUrl;
+
+//            $article->shareScheme =urlencode($shareScheme);
+            $article->shareScheme =$shareScheme;
 
             $view = view('find.preview', [
                 'article' => $article,
