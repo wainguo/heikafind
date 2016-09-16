@@ -194,7 +194,7 @@ class ArticleController extends Controller
 
             array_push($pagedArticles, $article);
             $i += 1;
-            if($i % $countPerPage == 0 || $i == count($articles)){
+            if($i % $countPerPage == 0 || $i >= count($articles)){
                 $page += 1;
                 $data = array(
                     'totalPages' => ceil(count($articles)/$countPerPage),
@@ -206,6 +206,8 @@ class ArticleController extends Controller
                 $dataFile = $findpath."/p/data_".$page.".json";
                 file_put_contents($dataFile, json_encode($data));
 
+                //clear
+                $pagedArticles = array();
                 array_push($buildlogs, "create list data file: ".$dataFile."<span class='text-success'> success.</span>");
             }
         }
