@@ -167,10 +167,21 @@ class ArticleController extends Controller
             $articleUrl = $baseUrl.$article->id.".html";
             $coverUrl = $baseUrl."images/".basename($article->cover);
 
-            $shareScheme = "heika://share?title=".urlencode($article->title).
-                "&shareDescription=".urlencode($article->description)."&url=".$articleUrl."&imgUrl=".$coverUrl;
+            $query = array(
+                'title' => $article->title,
+                'shareDescription' => $article->description,
+                'url' => $articleUrl,
+                'imgUrl' => $coverUrl
+            );
+//            $params = http_build_query($query);
+            $params = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
+            $shareScheme = "heika://share?". $params;
+
+//            $shareScheme = "heika://share?title=".urlencode($article->title).
+//                "&shareDescription=".urlencode($article->description)."&url=".$articleUrl."&imgUrl=".$coverUrl;
 
 //            $article->shareScheme =urlencode($shareScheme);
+//            $article->shareScheme = htmlentities($shareScheme, ENT_QUOTES, "UTF-8");
             $article->shareScheme =$shareScheme;
 
             $view = view('find.preview', [
