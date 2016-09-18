@@ -173,12 +173,12 @@ class ArticleController extends Controller
                 'url' => $articleUrl,
                 'imgUrl' => $coverUrl
             );
-            $params = http_build_query($query);
+//            $params = http_build_query($query);
 //            $params = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
-            $shareScheme = "heika://share?". $params;
+//            $shareScheme = "heika://share?". $params;
 
-//            $shareScheme = "heika://share?title=".urlencode($article->title).
-//                "&shareDescription=".urlencode($article->description)."&url=".$articleUrl."&imgUrl=".$coverUrl;
+            $shareScheme = "heika://share?title=".urlencode($article->title).
+                "&shareDescription=".urlencode($article->description)."&url=".$articleUrl."&imgUrl=".$coverUrl;
 
 //            $article->shareScheme =urlencode($shareScheme);
 //            $article->shareScheme = htmlentities($shareScheme, ENT_QUOTES, "UTF-8");
