@@ -164,8 +164,8 @@ class ArticleController extends Controller
             array_push($buildlogs, '压缩内容图片: '.json_encode($result['image_urls']));
 
             //文章地址绝对URL,图片地址绝对URL
-            $articleUrl = $baseUrl.$article->id.".html";
-            $coverUrl = $baseUrl."images/".basename($article->cover);
+            $articleUrl = $baseUrl.'p/'.$article->id.".html";
+            $coverUrl = $baseUrl."p/images/".basename($article->cover);
 
             $query = array(
                 'title' => $article->title,
@@ -174,11 +174,11 @@ class ArticleController extends Controller
                 'imgUrl' => $coverUrl
             );
 //            $params = http_build_query($query);
-//            $params = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
-//            $shareScheme = "heika://share?". $params;
+            $params = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
+            $shareScheme = "heika://share?". $params;
 
-            $shareScheme = "heika://share?title=".$article->title.
-                "&shareDescription=".$article->description."&url=".$articleUrl."&imgUrl=".$coverUrl;
+//            $shareScheme = "heika://share?title=".$article->title.
+//                "&shareDescription=".$article->description."&url=".$articleUrl."&imgUrl=".$coverUrl;
 
 //            $article->shareScheme =urlencode($shareScheme);
 //            $article->shareScheme = htmlentities($shareScheme, ENT_QUOTES, "UTF-8");
