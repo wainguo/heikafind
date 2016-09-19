@@ -1,16 +1,16 @@
 @include('include.header')
 <div class="container">
     <form class="form" action="/build">
-        <div class="radio">
-            <label>
-                <input type="radio" name="env" id="envTest" value="test"> for 113测试环境
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="env" id="envProduct" value="product"> for 线上环境
-            </label>
-        </div>
+        {{--<div class="radio">--}}
+            {{--<label>--}}
+                {{--<input type="radio" name="env" id="envTest" value="test"> for 113测试环境--}}
+            {{--</label>--}}
+        {{--</div>--}}
+        {{--<div class="radio">--}}
+            {{--<label>--}}
+                {{--<input type="radio" name="env" id="envProduct" value="product"> for 线上环境--}}
+            {{--</label>--}}
+        {{--</div>--}}
 
         <button type="submit" class="btn btn-success btn-lg text-center">立即构建</button>
     </form>

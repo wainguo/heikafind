@@ -100,7 +100,9 @@ class ArticleController extends Controller
     {
 
         // $env in test, product
-        $env = $request->input('env');
+//        $env = $request->input('env');
+        $env = env('FIND_FOR_ENV', 'product');
+
         if(empty($env)){
             $env = 'test';
         }

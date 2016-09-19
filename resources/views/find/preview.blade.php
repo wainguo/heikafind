@@ -73,5 +73,19 @@
                 $('.wrap').css('padding-bottom','80px');
             }
         });
+        function isWeiXin(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $(function(){
+            if(isWeiXin()){
+                $('a.icon-share').hide();
+            }
+        });
     </script>
 @endif
