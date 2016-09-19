@@ -1,225 +1,242 @@
 /*---------------------初始化样式--------------------*/
 cite, i, s, b, em {
-	font-style: normal;
-	font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
 }
 
 body, ul, li, p, dl, dt, dd, ol, h1, h2, h3, h4, h5, h6, figure {
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1, h2, h3, h4 {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 input {
-	font-family: 'Microsoft YaHei', STXihei, MingLiu;
+    font-family: 'Microsoft YaHei', STXihei, MingLiu;
 }
 
 html, body {
-	width: 100%;
-	height: 100%;
-	font-family: "Microsoft YaHei";
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft YaHei";
 }
 
 a {
-	text-decoration: none
+    text-decoration: none
 }
 
 .wrap {
-	width: 100%;
+    width: 100%;
 }
 
 .find-box ul li {
-	width: 100%;
-	margin-top: 0.64rem;
-	border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin-top: 0.64rem;
+    border-bottom: 1px solid #ccc;
 }
 
 .find-box ul li:last-child {
-	border-bottom: none;
+    border-bottom: none;
 }
 
 .find-box ul li a {
-	display: block;
+    display: block;
 }
 
 .find-box ul li img {
-	padding: 0 2%;
-	width: 100%;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
+    padding: 0 2%;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
 }
 
 .res-details {
-	padding: 0.85rem 2% 0.746rem;
+    padding: 0.85rem 2% 0.746rem;
 }
 
 .res-details h2 {
-	font-size: 0.9rem;
-	margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
 }
 
 .res-details p {
-	font-size: 0.5rem;
-	color: #999;
-	line-height: 1rem;
+    font-size: 0.5rem;
+    color: #999;
+    line-height: 1rem;
 }
 
 .load {
-	width: 35%;
-	height: 2rem;
-	line-height: 2rem;
-	margin: 0 auto;
-	font-size: 0.75rem;
-	display: none;
+    width: 35%;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 0.75rem;
+    display: none;
 }
 
 .load b {
-	float: left;
-	display: block;
+    float: left;
+    display: block;
 }
 
 .load img {
-	float: left;
-	margin: 0.5rem 0.3rem 0 0;
+    float: left;
+    margin: 0.5rem 0.3rem 0 0;
 }
 
 /* ---------------------详情页----------------------- */
 .details-box {
-	z-index: 1;
+    z-index: 1;
 }
 
 .details-box, .details-box img {
-	width: 100%;
+    width: 100%;
 }
 
 .details-box .find-detail {
-	width: 100%;
+    width: 100%;
 }
 
 .details-box .find-detail h2 {
-	width: 100%;
-	font-size: 1rem;
-	padding: 0.6rem 0 0.789rem 0;
-	font-weight: bold;
-	line-height: 1.5rem;
-	border-bottom: 1px solid #ccc;
-	text-indent: 0.9rem;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem 0 0.789rem 0;
+    font-weight: bold;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    text-indent: 0.9rem;
 }
 
 .details-box .find-detail h2 > a {
-	float: right;
-	margin: 0.3rem 1rem;
+    float: right;
+    margin: 0.3rem 1rem;
 }
 
 .icon-share {
-	color: #fff;
-	width: 17px;
-	height: 16px;
-	background: url(../images/icon.png) no-repeat -12px -4px;
-	background-size: 120px 140px;
+    display: none;
+    color: #fff;
+    width: 17px;
+    height: 16px;
+    background: url(../images/icon.png) no-repeat -12px -4px;
+    background-size: 120px 140px;
 }
 
 .details-box .find-detail p {
-	width: 92%;
-	padding: 0.853rem 4%;
-	color: #757575;
-	font-size: 0.75rem;
-	line-height: 1.3rem;
-	font-weight: bold;
+    width: 92%;
+    padding: 0.853rem 4%;
+    color: #757575;
+    font-size: 0.75rem;
+    line-height: 1.3rem;
+    font-weight: bold;
 }
 
 .once-use {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 49px;
-	line-height: 49px;
-	color: #fff;
-	text-align: center;
-	background: #ddae77;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    line-height: 49px;
+    color: #fff;
+    text-align: center;
+    background: #ddae77;
 }
 
 .details-box .find-detail img, .image-captioned img {
-	width: 100%;
-	height: auto;
+    width: 100%;
+    height: auto;
 }
 
 /*hide ckeditor produced tag*/
 figcaption {
-	display: none;
+    display: none;
 }
 
 .watermark {
-	width: 101px;
-	height: 77px;
-	background: url('../images/watermark.png') no-repeat center;
-	background-size: 101px 77px;
-	margin: 20px auto 0;
+    width: 101px;
+    height: 77px;
+    background: url('../images/watermark.png') no-repeat center;
+    background-size: 101px 77px;
+    margin: 20px auto 0;
 }
 
 .pd-bot {
-	padding-bottom: 80px;
+    padding-bottom: 80px;
 }
 
 .filter-blur {
-	-webkit-filter: blur(30px);
-	-moz-filter: blur(30px);
-	-o-filter: blur(30px);
-	-ms-filter: blur(30px);
-	filter: blur(30px);
+    -webkit-filter: blur(30px);
+    -moz-filter: blur(30px);
+    -o-filter: blur(30px);
+    -ms-filter: blur(30px);
+    filter: blur(30px);
 }
 
 .big-pic {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 999;
-	display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
 }
 
 .big-pic img {
-	width: 100%;
-	height: auto;
-	position: absolute;
-	top: 50%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
 }
 
 .layer-filter{
-	width:100%;
-	height:100%;
-	position:absolute;
-	top:0;
-	left:0;
-	background:#000;
-	filter:alpha(opacity=70);
-	opacity:0.7;
-	display: none;
-	z-index:100;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:#000;
+    filter:alpha(opacity=70);
+    opacity:0.7;
+    display: none;
+    z-index:100;
 }
 .brower-guide{
-	z-index:10000;
-	display: none;
-	width:100%;
-	position: fixed;
-	right: 0;
-	top: 0;
-	left:70px;
+    z-index:10000;
+    display: none;
+    width:100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left:70px;
 }
 .brower-guide img{
-	width: 80%;
-	margin: auto;
+    width: 80%;
+    margin: auto;
 }
 
-
-
-
-
-
+/* -------------------找不到此页面-------------------- */
+.not-found{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background: #eaecf0;
+}
+.nfound-box{
+	top: 26%;
+	left: 30%;
+	position: absolute;
+}
+.nfound-box img{
+	width: 60%;
+}
+.nfound-box p{
+	margin-left: 15%;
+	font-size: 0.8rem;
+	letter-spacing: 3px;
+}
