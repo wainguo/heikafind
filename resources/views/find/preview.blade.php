@@ -115,7 +115,7 @@
 
         $(function(){
             if(isWeiXin()){
-                $('a.icon-share').hide();
+                $('a.icon-share').show();
             }
         });
     </script>
