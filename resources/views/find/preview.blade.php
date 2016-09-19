@@ -36,6 +36,10 @@
     <div class="big-pic">
         <img id="bigImage" src="" alt=""/>
     </div>
+    <div class="layer-filter"></div>
+    <div id="mask" class="brower-guide">
+        <img src="images/guide.png" alt=""/>
+    </div>
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
     <script type="text/javascript" src="../js/hammer-image.js"></script>
