@@ -26,20 +26,11 @@
                 <div>
                     {!! $article->content !!}
                 </div>
-            {{--<ul>--}}
-                {{--<li>--}}
-                    {{--<img src="{{$article->cover}}"/>--}}
-                    {{--<h2><span>{{$article->title}}</span></h2>--}}
-                    {{--<p><span>{{$article->description}}</span></p>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--{!! $article->content !!}--}}
-                {{--</li>--}}
-            {{--</ul>--}}
             </div>
         </div>
         <div class="watermark"></div>
-        <a href="{{$scheme}}" class="once-use">立即享用</a>
+        {{--<a href="{{$scheme}}" class="once-use">立即享用</a>--}}
+        <a href="javascript:;" data-src="{{$scheme}}" class="once-use">立即享用</a>
     </div>
 
     <div class="big-pic">
@@ -47,9 +38,13 @@
     </div>
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
-    <script type="text/javascript" src="../js/hammer-time.min.js"></script>
     <script type="text/javascript" src="../js/hammer-image.js"></script>
     <script type="text/javascript">
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        var yingyongbao = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.renrendai.heika';
+        var appStore = 'https://itunes.apple.com/us/app/hei-ka/id1014380550?mt=8';
+
         $('.find-detail').find('img').bind("click",function(){
             var imgH = $(this).height();
             $('.big-pic').css('height',$(window).height());
@@ -81,6 +76,38 @@
                 return false;
             }
         }
+
+        //打开app
+        function openApp(appDetailUrl){
+            var loadDateTime = new Date();
+            window.setTimeout(function() {
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime > 5000) {
+                    if(isiOS){
+                        window.location = appStore;
+                    }else{
+                        window.location = yingyongbao;
+                    }
+                }
+            },25);
+            window.location = appDetailUrl;
+        }
+
+        $('.once-use').click(function(){
+            var scheme = $(this).data('src');
+            if(isWeiXin()){
+                $('.brower-guide').show();
+                $('.layer-filter').show();
+                $('.layer-filter').click(function(e){
+                    if(e.target.className != 'brower-guide'){
+                        $('.layer-filter').hide();
+                        $('.brower-guide').hide();
+                    }
+                });
+            }else{
+                openApp(scheme);
+            }
+        });
 
         $(function(){
             if(isWeiXin()){

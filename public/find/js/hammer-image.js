@@ -4,10 +4,23 @@
 
 //图片放大缩小
 function hammerImage(elm) {
-    hammertime = new Hammer(elm, {});
-    hammertime.get('pinch').set({
-        enable: true
-    });
+    hammertime = new Hammer.Manager(elm);
+
+    var singleTap = new Hammer.Tap({ event: 'singletap' });
+    var doubleTap = new Hammer.Tap({event: 'doubletap', taps: 2 });
+
+    hammertime.add(new Hammer.Pan({ event: 'pan' }));
+    hammertime.add(new Hammer.Pinch({ event: 'pinch' }));
+    hammertime.add(new Hammer.Tap({event: 'doubletap', taps: 2 }));
+    hammertime.add(new Hammer.Tap({ event: 'singletap' }));
+    hammertime.get('pan').recognizeWith('pan');
+    hammertime.get('pinch').recognizeWith('pinch');
+    hammertime.get('doubletap').recognizeWith('singletap');
+    hammertime.get('singletap').requireFailure('doubletap');
+
+    // hammertime.get('pinch').set({
+    //     enable: true
+    // });
     var posX = 0,
         posY = 0,
         scale = 1,
@@ -19,7 +32,8 @@ function hammerImage(elm) {
         transform = "",
         el = elm;
 
-    hammertime.on('doubletap pan pinch panend pinchend', function(ev) {
+    hammertime.on('singletap doubletap pan pinch panend pinchend', function(ev) {
+        // alert(ev.type + '---')
         if (ev.type == "doubletap") {
             transform =
                 "translate3d(0, 0, 0) " +
@@ -37,6 +51,14 @@ function hammerImage(elm) {
             } catch (err) {}
             el.style.webkitTransform = transform;
             transform = "";
+        }
+        else if (ev.type == "singletap") {
+            //guoshengxing added
+            $('.big-pic').hide();
+            $('.wrap').removeClass('filter-blur');
+            $('.wrap').css('height','auto');
+            $('.wrap').css('overflow','auto');
+            $('.wrap').css('padding-bottom','80px');
         }
 
         //pan
