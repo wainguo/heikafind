@@ -86,53 +86,12 @@
             }
         });
 
-//        function openApp(openUrl, callback) {
-//            //检查app是否打开
-//            function checkOpen(cb){
-//                var _clickTime = +(new Date());
-//                function check(elsTime) {
-//                    if ( elsTime > 3000 || document.hidden || document.webkitHidden) {
-//                        cb(1);
-//                    } else {
-//                        cb(0);
-//                    }
-//                }
-//                //启动间隔20ms运行的定时器，并检测累计消耗时间是否超过3000ms，超过则结束
-//                var _count = 0, intHandle;
-//                intHandle = setInterval(function(){
-//                    _count++;
-//                    var elsTime = +(new Date()) - _clickTime;
-//                    if (_count>=100 || elsTime > 3000 ) {
-//                        clearInterval(intHandle);
-//                        check(elsTime);
-//                    }
-//                }, 20);
-//            }
-//
-//            //在iframe 中打开APP
-//            var ifr = document.createElement('iframe');
-//            ifr.src = openUrl;
-//            ifr.style.display = 'none';
-//            if (callback) {
-//                checkOpen(function(opened){
-//                    callback && callback(opened);
-//                });
-//            }
-//
-//            document.body.appendChild(ifr);
-//            setTimeout(function() {
-//                document.body.removeChild(ifr);
-//            }, 2000);
-//        }
-//        function logOpen(opened) {
-//            console.log("opened:"+opened);
-//        }
-
         $('.once-use').click(function(){
             var scheme = $(this).data('src');
             var jumpScheme = $(this).data('jumpsrc');
             if(platform.isWeixin){
                 $('.brower-guide').show();
+                $('.layer-filter').css("height",getDocHeight());
                 $('.layer-filter').show();
                 $('.layer-filter').click(function(e){
                     if(e.target.className != 'brower-guide'){
@@ -141,22 +100,20 @@
                     }
                 });
             }else{
-                if(!platform.isHeika) {
-                    //如果不是在黑卡打卡,通过外部跳转到app(外部浏览器)
-                    setTimeout(function() { openApp(jumpScheme)}, 200);
+                if(platform.isHeika) {
+                    //尝试通过内部链接跳转(在app内部)
+                    window.location.href = scheme;
                 }
-                //尝试通过内部链接跳转(在app内部)
-                window.location.href = scheme;
+                else{
+                    //如果不是在黑卡打卡,通过外部跳转到app(外部浏览器)
+                    openApp(jumpScheme);
+                }
             }
         });
 
         $(function(){
-//            var scheme = $('.once-use').data('src');
-
-            if(! platform.isWeixin){
+            if(platform.isHeika){
                 $('#weixinShare').show();
-//                window.location.href = scheme;
-//                setTimeout(function() { openApp(scheme)}, 200);
             }
         });
     </script>
