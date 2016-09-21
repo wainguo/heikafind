@@ -63,7 +63,8 @@ class ArticleController extends Controller
                 $jumpScheme = 'heika://main?jumpType=barDetail&id='.$article->detailId;
                 break;
             case 'ticket':
-                $scheme = "heika://showDetail?id=".$article->detailId;
+//                $scheme = "heika://showDetail?id=".$article->detailId;
+                $scheme = "heika://showDetail?dramaId=36911995&theatreId=36911997";
                 //TODO: 注意这个ID
                 $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=36911995&theatreId=36911997';
                 break;
@@ -162,7 +163,8 @@ class ArticleController extends Controller
                     $jumpScheme = 'heika://main?jumpType=barDetail&id='.$article->detailId;
                     break;
                 case 'ticket':
-                    $scheme = "heika://showDetail?id=".$article->detailId;
+//                    $scheme = "heika://showDetail?id=".$article->detailId;
+                    $scheme = "heika://showDetail?dramaId=36911995&theatreId=36911997";
                     //TODO: 注意这个ID
                     $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=36911995&theatreId=36911997';
                     break;
