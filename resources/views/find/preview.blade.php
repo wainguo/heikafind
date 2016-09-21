@@ -143,8 +143,9 @@
         });
 
         $(function(){
-            scheme = $('.once-use').data('src');
+            var scheme = $('.once-use').data('src');
 
+            alert(scheme);
             if(! platform.isWeixin){
                 $('a.icon-share').show();
                 openApp(scheme);
