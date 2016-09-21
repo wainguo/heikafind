@@ -19,10 +19,13 @@
         <div class="details-box">
             <div class="find-detail">
                 <img src="{{$article->cover}}"/>
-                <h2>
-                    <a href="{{$article->shareScheme}}" class="icon-share"></a>
-                    <span>{{$article->title}}</span>
-                </h2>
+                <div class="title-box">
+                    <!-- <a href="heika://weixin?title=xxx&desc=xxx&link=xxx&imgUrl=xxx" class="icon-share"></a> -->
+                    <h2>{{$article->title}}</h2>
+                    <div class="share clearfix"><span>特派员：黑卡专员</span>
+                        <a href="{{$article->shareScheme}}" class="clearfix"><img src="images/wx_icon.png"/><b>分享至微信</b></a>
+                    </div>
+                </div>
                 <p><span>{{$article->description}}</span></p>
                 <div>
                     {!! $article->content !!}
