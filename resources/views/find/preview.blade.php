@@ -9,13 +9,11 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" type="text/css" href="../css/init.css">
     <link rel="stylesheet" type="text/css" href="../css/find.css">
 </head>
 <body>
-<div class="layer-filter"></div>
-<div id="mask" class="brower-guide">
-    <img src="../images/guide.png" alt=""/>
-</div>
+
 @if(!empty($article->id))
     <div class="wrap pd-bot">
         <div class="details-box">
@@ -40,15 +38,23 @@
         <img id="bigImage" src="" alt=""/>
     </div>
 
+    <div class="layer-filter"></div>
+    <div id="mask" class="brower-guide">
+        <img src="../images/guide.png" alt=""/>
+    </div>
+    <div class="pop-confirm">
+        <p>在“黑卡”中打开链接吗？</p>
+        <div class="btn">
+            <a id="cancelOpenApp" href="javascript:;">取消</a>
+            <a id="sureOpenApp" href="javascript:;">打开</a>
+        </div>
+    </div>
+
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
     <script type="text/javascript" src="../js/hammer-image.js"></script>
+    <script type="text/javascript" src="../js/openApp.js"></script>
     <script type="text/javascript">
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        var yingyongbao = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.renrendai.heika';
-        var appStore = 'https://itunes.apple.com/us/app/hei-ka/id1014380550?mt=8';
-
         $('.find-detail').find('img').bind("click",function(){
             var imgH = $(this).height();
             $('.big-pic').css('height',$(window).height());
@@ -72,30 +78,6 @@
                 $('.wrap').css('padding-bottom','80px');
             }
         });
-        function isWeiXin(){
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        //打开app
-        function openApp(appDetailUrl){
-            var loadDateTime = new Date();
-            window.setTimeout(function() {
-                var timeOutDateTime = new Date();
-                if (timeOutDateTime - loadDateTime > 5000) {
-                    if(isiOS){
-                        window.location = appStore;
-                    }else{
-                        window.location = yingyongbao;
-                    }
-                }
-            },25);
-            window.location = appDetailUrl;
-        }
 
 //        function openApp(openUrl, callback) {
 //            //检查app是否打开
@@ -141,7 +123,7 @@
 
         $('.once-use').click(function(){
             var scheme = $(this).data('src');
-            if(isWeiXin()){
+            if(platform.isWeixin){
                 $('.brower-guide').show();
                 $('.layer-filter').show();
                 $('.layer-filter').click(function(e){
@@ -152,13 +134,15 @@
                 });
             }else{
                 openApp(scheme);
-//                openApp(scheme, logOpen);
             }
         });
 
         $(function(){
-            if(isWeiXin()){
+            scheme = $('.once-use').data('src');
+
+            if(! platform.isWeixin){
                 $('a.icon-share').show();
+                openApp(scheme);
             }
         });
     </script>
