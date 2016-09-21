@@ -24,7 +24,7 @@
                     <h2>{{$article->title}}</h2>
                     <div class="share clearfix"><span>特派员：黑卡专员</span>
                         <div id="weixinShare" class="clearfix" style="display: none;">
-                            <a href="{{$article->shareScheme}}" class="color-grey"><img src="../images/wx_icon.png"/><b>分享至微信</b></a>
+                            <a href="{{$article->shareScheme}}" class="color-grey"><img class="ignore-gesture" src="../images/wx_icon.png"/><b>分享至微信</b></a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
     <script type="text/javascript" src="../js/hammer-image.js"></script>
     <script type="text/javascript" src="../js/openApp.js"></script>
     <script type="text/javascript">
-        $('.find-detail').find('img').bind("click",function(){
+        $('.find-detail').find('img').not('.ignore-gesture').bind("click",function(){
             var imgH = $(this).height();
             $('.big-pic').css('height',$(window).height());
             $('.wrap').css('height',$(window).height());
@@ -138,7 +138,8 @@
                     }
                 });
             }else{
-                openApp(scheme);
+                window.location.href = scheme;
+                setTimeout(function() { openApp(scheme)}, 200);
             }
         });
 
