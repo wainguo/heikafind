@@ -141,10 +141,12 @@
                     }
                 });
             }else{
-                //先尝试通过内部链接跳转(在app内部)
+                if(!platform.isHeika) {
+                    //如果不是在黑卡打卡,通过外部跳转到app(外部浏览器)
+                    setTimeout(function() { openApp(jumpScheme)}, 200);
+                }
+                //尝试通过内部链接跳转(在app内部)
                 window.location.href = scheme;
-                //如果失败,则通过外部跳转(外部浏览器)
-                setTimeout(function() { openApp(jumpScheme)}, 200);
             }
         });
 
