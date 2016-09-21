@@ -137,18 +137,23 @@ class ArticleController extends Controller
             switch ($article->category){
                 case 'restaurant':
                     $scheme = "heika://resDetail?id=".$article->detailId;
+                    $jumpScheme = 'heika://main?jumpType=resDetail'+'&id='+$article->detailId;
                     break;
                 case 'cake':
                     $scheme = "heika://cakeDetail?id=".$article->detailId;
+                    $jumpScheme = 'heika://main?jumpType=cakeDetail'+'&id='+$article->detailId;
                     break;
                 case 'teaRoom':
                     $scheme = "heika://highteaDetail?id=".$article->detailId;
+                    $jumpScheme = 'heika://main?jumpType=highteaDetail'+'&id='+$article->detailId;
                     break;
                 case 'bar':
                     $scheme = "heika://barDetail?id=".$article->detailId;
+                    $jumpScheme = 'heika://main?jumpType=barDetail'+'&id='+$article->detailId;
                     break;
                 case 'ticket':
                     $scheme = "heika://showDetail?id=".$article->detailId;
+                    $jumpScheme = 'heika://main?jumpType=showDetail'+'&id='+$article->detailId;
                     break;
                 default:
                     $scheme = "heika://refresh";
@@ -189,6 +194,7 @@ class ArticleController extends Controller
             $view = view('find.preview', [
                 'article' => $article,
                 'scheme' => $scheme,
+                'jumpScheme' => $jumpScheme,
             ]);
             $file = $findpath."/p/".$article->id.".html";
             file_put_contents($file, $view);

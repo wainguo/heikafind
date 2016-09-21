@@ -51,7 +51,7 @@
         <p>在“黑卡”中打开链接吗？</p>
         <div class="btn">
             <a id="cancelOpenApp" href="javascript:;">取消</a>
-            <a id="sureOpenApp" href="{{$scheme}}">打开</a>
+            <a id="sureOpenApp" href="{{$jumpScheme}}">打开</a>
         </div>
     </div>
 
