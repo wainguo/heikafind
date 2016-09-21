@@ -44,29 +44,38 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $scheme = "heika://refresh";
+        $jumpScheme = 'heika://main';
         switch ($article->category){
             case 'restaurant':
                 $scheme = "heika://resDetail?id=".$article->detailId;
+                $jumpScheme = 'heika://main?jumpType=resDetail&id='.$article->detailId;
                 break;
             case 'cake':
                 $scheme = "heika://cakeDetail?id=".$article->detailId;
+                $jumpScheme = 'heika://main?jumpType=cakeDetail&id='.$article->detailId;
                 break;
             case 'teaRoom':
                 $scheme = "heika://highteaDetail?id=".$article->detailId;
+                $jumpScheme = 'heika://main?jumpType=highteaDetail&id='.$article->detailId;
                 break;
             case 'bar':
                 $scheme = "heika://barDetail?id=".$article->detailId;
+                $jumpScheme = 'heika://main?jumpType=barDetail&id='.$article->detailId;
                 break;
             case 'ticket':
                 $scheme = "heika://showDetail?id=".$article->detailId;
+                //TODO: 注意这个ID
+                $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=XXXXXX&theatreId=XXXXXX';
                 break;
             default:
                 $scheme = "heika://refresh";
+                $jumpScheme = 'heika://main';
                 break;
         }
         return view('find.preview', [
             'article' => $article,
             'scheme' => $scheme,
+            'jumpScheme' => $jumpScheme,
         ]);
     }
     public function prebuild()
@@ -154,7 +163,8 @@ class ArticleController extends Controller
                     break;
                 case 'ticket':
                     $scheme = "heika://showDetail?id=".$article->detailId;
-                    $jumpScheme = 'heika://main?jumpType=showDetail&id='.$article->detailId;
+                    //TODO: 注意这个ID
+                    $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=XXXXXX&theatreId=XXXXXX';
                     break;
                 default:
                     $scheme = "heika://refresh";
