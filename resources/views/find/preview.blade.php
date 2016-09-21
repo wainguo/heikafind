@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:;" data-src="{{$scheme}}" class="once-use">立即享用</a>
+        <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use">立即享用</a>
         <div class="watermark"></div>
         {{--<a href="{{$scheme}}" class="once-use">立即享用</a>--}}
 
@@ -130,6 +130,7 @@
 
         $('.once-use').click(function(){
             var scheme = $(this).data('src');
+            var jumpScheme = $(this).data('jumpsrc');
             if(platform.isWeixin){
                 $('.brower-guide').show();
                 $('.layer-filter').show();
@@ -140,18 +141,20 @@
                     }
                 });
             }else{
-                openApp(scheme);
-//                window.location.href = scheme;
-//                setTimeout(function() { openApp(scheme)}, 200);
+                //先尝试通过内部链接跳转(在app内部)
+                window.location.href = scheme;
+                //如果失败,则通过外部跳转(外部浏览器)
+                setTimeout(function() { openApp(jumpScheme)}, 200);
             }
         });
 
         $(function(){
-            var scheme = $('.once-use').data('src');
+//            var scheme = $('.once-use').data('src');
 
             if(! platform.isWeixin){
                 $('#weixinShare').show();
-                openApp(scheme);
+//                window.location.href = scheme;
+//                setTimeout(function() { openApp(scheme)}, 200);
             }
         });
     </script>
