@@ -158,6 +158,7 @@ class ArticleController extends Controller
                     break;
                 default:
                     $scheme = "heika://refresh";
+                    $jumpScheme = 'heika://main';
                     break;
             }
 
