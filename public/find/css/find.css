@@ -102,21 +102,45 @@ a {
     width: 100%;
 }
 
-.details-box .find-detail h2 {
+.details-box .find-detail .title-box {
     width: 100%;
     font-size: 1rem;
-    padding: 0.6rem 0 0.789rem 0;
-    font-weight: bold;
-    line-height: 1.5rem;
+    padding: 0.6rem 0 0.789rem 0;  
     border-bottom: 1px solid #ccc;
-    text-indent: 0.9rem;
+    height: 5rem;
 }
 
-.details-box .find-detail h2 > a {
+.details-box .find-detail .title-box > a {
     float: right;
     margin: 0.3rem 1rem;
 }
-
+.title-box h2{
+    padding-left: 0.9rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.title-box .share{
+    padding-left: 0.9rem;
+    line-height: 3rem;
+    font-size: 0.6rem;
+}
+.title-box .share span{
+    float: left;
+}
+.title-box .share > div{
+    float: right;
+    margin-right: 0.3rem;
+}
+.title-box .share div img{
+    float: left;
+    width: 19%;
+    margin: 0.9rem 0.3rem 0 0;
+}
+.title-box .share div b{
+    float: left;
+    display: inline-block;
+}
 .icon-share {
     display: none;
     color: #fff;
@@ -129,7 +153,7 @@ a {
 .details-box .find-detail p {
     width: 92%;
     padding: 0.853rem 4%;
-    color: #757575;
+    color: #808080;
     font-size: 0.75rem;
     line-height: 1.3rem;
     font-weight: bold;
@@ -220,23 +244,6 @@ figcaption {
     margin: auto;
 }
 
-/* -------------------找不到此页面-------------------- */
-.not-found{
-	width: 100%;
-	height: 100%;
-	position: relative;
-	background: #eaecf0;
-}
-.nfound-box{
-	top: 26%;
-	left: 30%;
-	position: absolute;
-}
-.nfound-box img{
-	width: 60%;
-}
-.nfound-box p{
-	margin-left: 15%;
-	font-size: 0.8rem;
-	letter-spacing: 3px;
+.color-grey {
+    color: #777777;
 }
