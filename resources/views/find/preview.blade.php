@@ -145,9 +145,8 @@
         $(function(){
             var scheme = $('.once-use').data('src');
 
-//            alert(scheme);
             if(! platform.isWeixin){
-                $('a.icon-share').show();
+                $('#weixinShare').show();
                 openApp(scheme);
             }
         });
