@@ -134,6 +134,7 @@ class ArticleController extends Controller
         $pagedArticles = array();
         foreach ($articles as $article){
             $scheme = "heika://refresh";
+            $jumpScheme = 'heika://main';
             switch ($article->category){
                 case 'restaurant':
                     $scheme = "heika://resDetail?id=".$article->detailId;
