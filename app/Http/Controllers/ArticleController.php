@@ -65,7 +65,7 @@ class ArticleController extends Controller
             case 'ticket':
                 $scheme = "heika://showDetail?id=".$article->detailId;
                 //TODO: 注意这个ID
-                $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=XXXXXX&theatreId=XXXXXX';
+                $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=36911995&theatreId=36911997';
                 break;
             default:
                 $scheme = "heika://refresh";
@@ -164,7 +164,7 @@ class ArticleController extends Controller
                 case 'ticket':
                     $scheme = "heika://showDetail?id=".$article->detailId;
                     //TODO: 注意这个ID
-                    $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=XXXXXX&theatreId=XXXXXX';
+                    $jumpScheme = 'heika://main?jumpType=showDetail&dramaId=36911995&theatreId=36911997';
                     break;
                 default:
                     $scheme = "heika://refresh";
