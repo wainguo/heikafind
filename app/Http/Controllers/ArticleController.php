@@ -134,7 +134,7 @@ class ArticleController extends Controller
         //build new data
 
         //每页多少条?
-        $countPerPage = 3;
+        $countPerPage = 10;
 
         $findpath = public_path('find');
         $articles = Article::orderBy('created_at', 'desc')->get();
@@ -232,6 +232,8 @@ class ArticleController extends Controller
                 $pagedArticles = array();
                 array_push($buildlogs, "create list data file: ".$dataFile."<span class='text-success'> success.</span>");
             }
+            
+            unset($article);
         }
 
         return view('find.buildlog', [

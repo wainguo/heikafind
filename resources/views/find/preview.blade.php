@@ -34,9 +34,10 @@
                 </div>
             </div>
         </div>
+        <a href="javascript:;" data-src="{{$scheme}}" class="once-use">立即享用</a>
         <div class="watermark"></div>
         {{--<a href="{{$scheme}}" class="once-use">立即享用</a>--}}
-        <a href="javascript:;" data-src="{{$scheme}}" class="once-use">立即享用</a>
+
     </div>
 
     <div class="big-pic">
@@ -47,13 +48,14 @@
     <div id="mask" class="brower-guide">
         <img src="../images/guide.png" alt=""/>
     </div>
-    <div class="pop-confirm">
-        <p>在“黑卡”中打开链接吗？</p>
-        <div class="btn">
-            <a id="cancelOpenApp" href="javascript:;">取消</a>
-            <a id="sureOpenApp" href="{{$jumpScheme}}">打开</a>
-        </div>
-    </div>
+    <a id="sureOpenApp" href="{{$jumpScheme}}" style="display: none">打开</a>
+    {{--<div class="pop-confirm">--}}
+        {{--<p>在“黑卡”中打开链接吗？</p>--}}
+        {{--<div class="btn">--}}
+            {{--<a id="cancelOpenApp" href="javascript:;">取消</a>--}}
+            {{--<a id="sureOpenApp" href="{{$jumpScheme}}">打开</a>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
@@ -138,8 +140,9 @@
                     }
                 });
             }else{
-                window.location.href = scheme;
-                setTimeout(function() { openApp(scheme)}, 200);
+                openApp(scheme);
+//                window.location.href = scheme;
+//                setTimeout(function() { openApp(scheme)}, 200);
             }
         });
 
