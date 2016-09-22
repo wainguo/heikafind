@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <hr>
-                <p><span>{{$article->description}}</span></p>
                 <div class="has-distance">
+                    <p><span>{{$article->description}}</span></p>
                     {!! $article->content !!}
                 </div>
             </div>
