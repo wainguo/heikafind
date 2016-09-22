@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <p><span>{{$article->description}}</span></p>
-                <div>
+                <div class="has-distance">
                     {!! $article->content !!}
                 </div>
             </div>
