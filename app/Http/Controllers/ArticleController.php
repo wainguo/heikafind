@@ -73,10 +73,13 @@ class ArticleController extends Controller
                 $jumpScheme = 'heika://main';
                 break;
         }
-        return view('find.preview', [
+
+        $rand = uniqid();
+        $view = view('find.preview', [
             'article' => $article,
             'scheme' => $scheme,
             'jumpScheme' => $jumpScheme,
+            'rand' => $rand,
         ]);
     }
     public function prebuild()
@@ -205,10 +208,12 @@ class ArticleController extends Controller
 //            $article->shareScheme = htmlentities($shareScheme, ENT_QUOTES, "UTF-8");
             $article->shareScheme =$shareScheme;
 
+            $rand = uniqid();
             $view = view('find.preview', [
                 'article' => $article,
                 'scheme' => $scheme,
                 'jumpScheme' => $jumpScheme,
+                'rand' => $rand,
             ]);
             $file = $findpath."/p/".$article->id.".html";
             file_put_contents($file, $view);

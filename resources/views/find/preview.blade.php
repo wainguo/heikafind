@@ -9,8 +9,8 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="expires" content="0">
-    <link rel="stylesheet" type="text/css" href="../css/init.css">
-    <link rel="stylesheet" type="text/css" href="../css/find.css">
+    <link rel="stylesheet" type="text/css" href="../css/init.css?t={{$rand or ''}}">
+    <link rel="stylesheet" type="text/css" href="../css/find.css?t={{$rand or ''}}">
 </head>
 <body>
 
@@ -59,8 +59,8 @@
 
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
-    <script type="text/javascript" src="../js/hammer-image.js"></script>
-    <script type="text/javascript" src="../js/openApp.js"></script>
+    <script type="text/javascript" src="../js/hammer-image.js?t={{$rand or ''}}"></script>
+    <script type="text/javascript" src="../js/openApp.js?t={{$rand or ''}}"></script>
     <script type="text/javascript">
         $('.find-detail').find('img').not('.ignore-gesture').bind("click",function(){
             var imgH = $(this).height();
