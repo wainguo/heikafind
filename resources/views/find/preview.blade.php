@@ -28,6 +28,7 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <p><span>{{$article->description}}</span></p>
                 <div class="has-distance">
                     {!! $article->content !!}
