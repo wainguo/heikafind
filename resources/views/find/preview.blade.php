@@ -18,9 +18,8 @@
     <div class="wrap pd-bot">
         <div class="details-box">
             <div class="find-detail">
-                <img src="{{$article->cover}}"/>
+                {{--<img src="{{$article->cover}}"/>--}}
                 <div class="title-box">
-                    <!-- <a href="heika://weixin?title=xxx&desc=xxx&link=xxx&imgUrl=xxx" class="icon-share"></a> -->
                     <h2>{{$article->title}}</h2>
                     <div class="share clearfix"><span>特派员：黑卡专员</span>
                         <div id="weixinShare" class="clearfix" style="display: none;">
@@ -37,7 +36,6 @@
         </div>
         <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use">立即享用</a>
         <div class="watermark"></div>
-        {{--<a href="{{$scheme}}" class="once-use">立即享用</a>--}}
 
     </div>
 
@@ -50,23 +48,18 @@
         <img src="../images/guide.png" alt=""/>
     </div>
     <a id="sureOpenApp" href="{{$jumpScheme}}" style="display: none">打开</a>
-    {{--<div class="pop-confirm">--}}
-        {{--<p>在“黑卡”中打开链接吗？</p>--}}
-        {{--<div class="btn">--}}
-            {{--<a id="cancelOpenApp" href="javascript:;">取消</a>--}}
-            {{--<a id="sureOpenApp" href="{{$jumpScheme}}">打开</a>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/hammer.min.js"></script>
     <script type="text/javascript" src="../js/hammer-image.js?t={{$rand or ''}}"></script>
     <script type="text/javascript" src="../js/openApp.js?t={{$rand or ''}}"></script>
     <script type="text/javascript">
+        //防止浮层可见时,点击浮层会同时触发浮层下的图片的点击事件
+        $('.big-pic img')[0].addEventListener("touchend", function(e){
+            e.preventDefault();
+        });
         $('.find-detail').find('img').not('.ignore-gesture').bind("click",function(){
             var imgH = $(this).height();
-            $('.big-pic').css('height',$(window).height());
-            $('.wrap').css('height',$(window).height());
             $('.wrap').css('overflow','hidden');
             $('.wrap').css('padding-bottom',0);
             $('.wrap').addClass('filter-blur');
@@ -85,6 +78,8 @@
                 $('.wrap').css('overflow','auto');
                 $('.wrap').css('padding-bottom','80px');
             }
+            e.preventDefault();
+            e.stopPropagation();
         });
 
         $('.once-use').click(function(){
