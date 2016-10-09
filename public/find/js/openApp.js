@@ -25,7 +25,9 @@ var platform = {
     //windows phone
     wPhone: ua.indexOf('Windows Phone') > -1,
     //是否在 微信 客户端内
-    isWeixin : ua.indexOf('MicroMessenger') > -1
+    isWeixin : ua.indexOf('MicroMessenger') > -1,
+    //是否在 黑卡 app内
+    isHeika : ua.indexOf('Heika') > -1
 };
 
 var out = /iPhone OS (\d+)/.exec(ua);
@@ -42,16 +44,17 @@ var APP_SCHEMA = "heika://";
 
 var isappInstalled = getUrlParam('isappinstalled');
 
-function openHeika(){
-    $('.pop-confirm').show();
-    $('.layer-filter').show();
+function getDocHeight() {
+    var D = document;
+    return Math.max(
+        Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+        Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+        Math.max(D.body.clientHeight, D.documentElement.clientHeight)
+    );
 }
-$('#cancelOpenApp').click(function(){
-    $('.pop-confirm').hide();
-    $('.layer-filter').hide();
-});
 
 function openApp(appDetailUrl) {
+    $('#sureOpenApp').attr('href',appDetailUrl);
     var installUrl;
     if(platform.iPhone || platform.iPad){
         installUrl = appStoreURL;
@@ -63,7 +66,7 @@ function openApp(appDetailUrl) {
         window.location.href = installUrl;
     }
     if(isappInstalled == 1){
-        openHeika();
+        $('#sureOpenApp')[0].click();
     }
 }
 

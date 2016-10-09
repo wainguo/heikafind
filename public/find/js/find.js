@@ -1,4 +1,5 @@
 $(function(){
+	
 	pageIsLoading = false;
 	totalPages = 1;
 	currentPage = 0;
@@ -27,7 +28,7 @@ $(function(){
 				var addstring = '';
 				if(Array.isArray(response.articles)){
 					response.articles.forEach(function (article) {
-						addstring+='<li><a href="p/'+article.id+'.html"><img src="p/' + article.cover + '"/></a><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></li>';
+						addstring+='<li><a href="p/'+article.id+'.html?t='+Math.random()+'"><img src="p/' + article.cover + '"/><div class="res-details"><h2>'+article.title+'</h2><p>'+article.description + '</p></div></a></li>';
 					})
 				}
 				$(".load").hide();
@@ -52,35 +53,6 @@ $(function(){
 
 	findList(1);
 
-	//绑定上下滑动事件
-	/*$("#list").tap( function () {
-	 //超过20条后显示加载图标
-	 if( lis.length >= 20 ){
-	 $(".load").show().delay(10000).hide();
-	 }
-
-	 });*/
-
-	/**$(window).bind('touchend',function() {
-		var scrollTop = $(this).scrollTop();               //滚动条距离顶部的高度
-		var scrollHeight = $(document).height();           //当前页面的总高度
-		var windowHeight = $(this).height();//当前可视的页面高度
-		if(scrollTop + windowHeight >= scrollHeight){      //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
-			//$(".load").show().delay(10000).hide();
-			//判断是不是最后一页
-			if(currentPage<totalPages){
-				console.log(pageIsLoading);
-				if(!pageIsLoading){
-					pageIsLoading = true;
-					timer = setTimeout(function(){
-						loadNextPage();
-					},1000);
-				}
-
-			}
-		}
-	});**/
-
 	$(window).scroll(function(){
 		var scrollTop = $(this).scrollTop();            //滚动条距离顶部的高度
 		var scrollHeight = $(document).height();        //当前页面的总高度
@@ -101,3 +73,4 @@ $(function(){
 		}
 	});
 });
+
