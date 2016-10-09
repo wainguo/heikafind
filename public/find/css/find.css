@@ -19,8 +19,14 @@ input {
 
 html, body {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     font-family: "Microsoft YaHei";
+}
+
+hr {
+    border:none;
+    border-top:1px solid #ddd;
+    margin-top: -0.1rem;
 }
 
 a {
@@ -33,8 +39,12 @@ a {
 
 .find-box ul li {
     width: 100%;
-    margin-top: 0.64rem;
-    border-bottom: 1px solid #ccc;
+    margin-top: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.find-detail hr{
+    margin-left: 4%;
 }
 
 .find-box ul li:last-child {
@@ -55,18 +65,21 @@ a {
 }
 
 .res-details {
-    padding: 0.85rem 2% 0.746rem;
+    padding: 0.5rem 2% 0.8rem;
 }
 
 .res-details h2 {
-    font-size: 0.9rem;
-    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .res-details p {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     color: #999;
     line-height: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .load {
@@ -105,9 +118,7 @@ a {
 .details-box .find-detail .title-box {
     width: 100%;
     font-size: 1rem;
-    padding: 0.6rem 0 0.789rem 0;  
-    border-bottom: 1px solid #ccc;
-    height: 5rem;
+    padding: 0.75rem 0 0.25rem 0;
 }
 
 .details-box .find-detail .title-box > a {
@@ -117,16 +128,17 @@ a {
 .title-box h2{
     padding-left: 0.9rem;
     line-height: 1.5rem;
-    font-weight: bold;
     font-size: 1rem;
+    font-weight: bold;
 }
 .title-box .share{
     padding-left: 0.9rem;
-    line-height: 3rem;
-    font-size: 0.6rem;
+    line-height: 2.8rem;
+    font-size: 0.8rem;
 }
 .title-box .share span{
     float: left;
+    color: #000;
 }
 .title-box .share > div{
     float: right;
@@ -135,11 +147,12 @@ a {
 .title-box .share div img{
     float: left;
     width: 19%;
-    margin: 0.9rem 0.3rem 0 0;
+    margin: 0.7rem 0.3rem 0 0;
 }
 .title-box .share div b{
     float: left;
     display: inline-block;
+    color: #555;
 }
 .icon-share {
     display: none;
@@ -151,33 +164,40 @@ a {
 }
 
 .details-box .find-detail p {
-    width: 92%;
-    padding: 0.853rem 4%;
-    color: #808080;
-    font-size: 0.75rem;
+    width: 96%;
+    padding: 0.4rem 2% 1rem;
+    color: #555;
+    font-size: 0.85rem;
     line-height: 1.3rem;
-    font-weight: bold;
 }
 .find-detail p.introduce{
-    padding: 0.2rem 0 0.5rem 4%;
+    padding: 0.5rem 0 0.5rem 2%;
 }
 
 .once-use {
     display: block;
-    width: 100%;
+    width: 96%;
     height: 49px;
     line-height: 49px;
     color: #fff;
     text-align: center;
     background: #ddae77;
-    margin: 0.4rem 0 1.4rem 0;
+    margin: 0.4rem 2% 1.4rem;
 }
 
 .details-box .find-detail img, .image-captioned img {
     width: 100%;
     height: auto;
+    margin-bottom: 1rem;
 }
-
+.details-box .find-detail .has-distance{
+    width: 96%;
+    padding: 0 2%;
+}
+.has-distance p:last-child{
+    color: #999;
+    font-size: 0.8rem;
+}
 /*hide ckeditor produced tag*/
 figcaption {
     display: none;
@@ -192,7 +212,7 @@ figcaption {
 }
 
 .pd-bot {
-    padding-bottom: 80px;
+    padding-bottom: 20px;
 }
 
 .filter-blur {
@@ -206,17 +226,18 @@ figcaption {
 .big-pic {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
     display: none;
+    overflow: hidden;
 }
 
 .big-pic img {
     width: 100%;
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 50%;
 }
 
