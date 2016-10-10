@@ -192,8 +192,8 @@ class ArticleController extends Controller
             $coverUrl = $baseUrl."p/images/".basename($article->cover);
 
             $query = array(
-                'title' => $article->title,
-                'shareDescription' => $article->description,
+                'title' => trim($article->title),
+                'shareDescription' => trim($article->description),
                 'url' => $articleUrl,
                 'imgUrl' => $coverUrl
             );

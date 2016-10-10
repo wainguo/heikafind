@@ -20,11 +20,12 @@
             <div class="find-detail">
                 {{--<img src="{{$article->cover}}"/>--}}
                 <div class="title-box">
+                    <a id="weixinShare" href="{{$article->shareScheme}}" class="icon-share"></a>
                     <h2>{{$article->title}}</h2>
                     <div class="share clearfix"><span>特派员：黑卡专员</span>
-                        <div id="weixinShare" class="clearfix" style="display: none;">
-                            <a href="{{$article->shareScheme}}" class="color-grey"><img class="ignore-gesture" src="../images/wx_icon.png"/><b>分享至微信</b></a>
-                        </div>
+                        {{--<div id="weixinShare" class="clearfix" style="display: none;">--}}
+                            {{--<a href="{{$article->shareScheme}}" class="color-grey"><img class="ignore-gesture" src="../images/wx_icon.png"/><b>分享至微信</b></a>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
                 <hr>
