@@ -56,7 +56,7 @@ a {
 }
 
 .find-box ul li img {
-    padding: 0 2%;
+    padding: 0 3%;
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -65,7 +65,7 @@ a {
 }
 
 .res-details {
-    padding: 0.5rem 2% 0.8rem;
+    padding: 0.5rem 4.5% 0.8rem;
 }
 
 .res-details h2 {
@@ -120,6 +120,7 @@ a {
     width: 100%;
     font-size: 1rem;
     padding: 0.75rem 0 0.25rem 0;
+    position: relative;
 }
 
 .details-box .find-detail .title-box > a {
@@ -131,6 +132,7 @@ a {
     line-height: 1.5rem;
     font-size: 1rem;
     font-weight: bold;
+    width: 13rem;
 }
 .title-box .share{
     padding-left: 0.9rem;
@@ -155,6 +157,14 @@ a {
     display: inline-block;
     color: #555;
 }
+.title-box .back{
+    position: absolute;
+    right: 0.3rem;
+    top: 0.6rem;
+}
+.find-detail .title-box .back img{
+    width: 55%;
+}
 .icon-share {
     display: none;
     color: #fff;
@@ -177,23 +187,23 @@ a {
 
 .once-use {
     display: block;
-    width: 96%;
-    height: 49px;
-    line-height: 49px;
-    color: #fff;
-    text-align: center;
-    background: #ddae77;
-    margin: 0.4rem 2% 1.4rem;
+    color: #010101;
+    background: url(../images/btn.png) no-repeat;
+    background-size: 100%;
+    height: 4rem;
+    margin: 0.4rem 0.2rem 1.4rem;
 }
 
 .details-box .find-detail img, .image-captioned img {
     width: 100%;
     height: auto;
     margin-bottom: 1rem;
+    border: none;
+    display: block;
 }
 .details-box .find-detail .has-distance{
-    width: 96%;
-    padding: 0 2%;
+    width: 94%;
+    padding: 0 3%;
 }
 .has-distance p:last-child{
     color: #999;

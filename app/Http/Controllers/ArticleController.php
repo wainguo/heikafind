@@ -545,7 +545,7 @@ class ArticleController extends Controller
                     $imgTag .= $attr . '="' . $v . '" ';
                 }
             }
-            $imgTag .= ' >';
+            $imgTag .= ' />';
 
             $newImgTags[$key] = $imgTag;
         }

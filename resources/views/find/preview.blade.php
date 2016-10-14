@@ -3,7 +3,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>发现详情页</title>
+    <title>黑卡发现</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -32,11 +32,11 @@
                 <div class="has-distance">
                     <p><span>{{$article->description}}</span></p>
                     {!! $article->content !!}
+                    <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use">立即享用</a>
                 </div>
             </div>
         </div>
-        <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use">立即享用</a>
-        <div class="watermark"></div>
+        {{--<div class="watermark"></div>--}}
 
     </div>
 
