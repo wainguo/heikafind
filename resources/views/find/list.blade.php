@@ -60,7 +60,7 @@
             method: "POST",
             url: "/internalTest/article/syncArticle",
             processData: false,
-            data: data
+            data: JSON.stringify(data)
         })
         .done(function( response ) {
             console.log(response);
@@ -79,7 +79,7 @@
             method: "POST",
             url: "/internalTest/article/syncArticle",
             processData: false,
-            data: data
+            data: JSON.stringify(data)
         })
         .done(function( response ) {
             console.log(response);
