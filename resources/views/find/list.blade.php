@@ -32,12 +32,12 @@
                     <a href="{{url('/delete/'.$article->id)}}" onclick="return confirm('删除后无法恢复,确定要删除吗')" class="btn btn-sm btn-danger">删除</a>
                 </td>
                 <td>
-                    <button onclick="addLinksTest({{$article}})">添加</button>
-                    <button onclick="deleteLinksTest({{$article}})">删除</button>
+                    <button onclick='addLinksTest({{$article}})'>添加</button>
+                    <button onclick='deleteLinksTest({{$article}})'>删除</button>
                 </td>
                 <td>
-                    <button onclick="addLinks({{$article}})">添加</button>
-                    <button onclick="deleteLinks({{$article}})">删除</button>
+                    <button onclick='addLinks({{$article}})'>添加</button>
+                    <button onclick='deleteLinks({{$article}})'>删除</button>
                 </td>
             </tr>
         @endforeach
