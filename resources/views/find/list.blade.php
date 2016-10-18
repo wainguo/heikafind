@@ -59,6 +59,7 @@
         $.ajax({
             method: "POST",
             url: "/internalTest/article/syncArticle",
+            processData: false,
             data: data
         })
         .done(function( response ) {
@@ -77,6 +78,7 @@
         $.ajax({
             method: "POST",
             url: "/internalTest/article/syncArticle",
+            processData: false,
             data: data
         })
         .done(function( response ) {
@@ -95,6 +97,7 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
+            processData: false,
             data: data
         })
                 .done(function( response ) {
@@ -113,11 +116,12 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
+            processData: false,
             data: data
         })
-                .done(function( response ) {
-                    console.log(response);
-                });
+        .done(function( response ) {
+            console.log(response);
+        });
     }
 </script>
 @include('include.footer')
