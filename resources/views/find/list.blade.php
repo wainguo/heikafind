@@ -32,8 +32,10 @@
                     <a href="{{url('/delete/'.$article->id)}}" onclick="return confirm('删除后无法恢复,确定要删除吗')" class="btn btn-sm btn-danger">删除</a>
                 </td>
                 <td>
-                    <button onclick='addLinksTest({{$article}})'>添加</button>
+                    <button onclick='addLinksTest("{{$article->id}}", "{{$article->category}}", "{{$article->detailId}}" )'>添加</button>
+                    {{--<button onclick='addLinksTest({{$article}})'>添加</button>--}}
                     <button onclick='deleteLinksTest({{$article}})'>删除</button>
+                    {{--<button onclick='deleteLinksTest({{$article}})'>删除</button>--}}
                 </td>
                 <td>
                     <button onclick='addLinks({{$article}})'>添加</button>
@@ -47,14 +49,21 @@
 </div>
 <script src="{{ asset('js/jquery-2.2.0.min.js') }}"></script>
 <script>
-    function addLinksTest(article) {
+//    function addLinksTest(article) {
+    function addLinksTest(id, serviceType, detailId) {
         console.log(article);
 
+//        var data = {
+//            status: "NORMAL",
+//            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+article.id+'.html',
+//            serviceType: article.category,
+//            itemId: article.detailId
+//        };
         var data = {
             status: "NORMAL",
-            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+article.id+'.html',
-            serviceType: article.category,
-            itemId: article.detailId
+            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+id+'.html',
+            serviceType: serviceType,
+            itemId: detailId
         };
         $.ajax({
             method: "POST",
