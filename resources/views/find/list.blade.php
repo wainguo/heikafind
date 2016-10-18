@@ -65,6 +65,12 @@
         })
         .done(function( response ) {
             console.log(response);
+            if(response.status == 0){
+                alert('同步成功');
+            }
+            else{
+                alert('同步失败');
+            }
         });
     }
     function deleteLinksTest(article) {
@@ -85,6 +91,12 @@
         })
         .done(function( response ) {
             console.log(response);
+            if(response.status == 0){
+                alert('同步成功');
+            }
+            else{
+                alert('同步失败');
+            }
         });
     }
     function addLinks(article) {
@@ -99,12 +111,18 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
-            contentType: 'application/json; charset=utf-8', // 很重要
+            contentType: 'application/json; charset=utf-8',
             traditional: true,
             data: JSON.stringify(data)
         })
         .done(function( response ) {
             console.log(response);
+            if(response.status == 0){
+                alert('同步成功');
+            }
+            else{
+                alert('同步失败');
+            }
         });
     }
     function deleteLinks(article) {
@@ -119,12 +137,18 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
-            contentType: 'application/json; charset=utf-8', // 很重要
+            contentType: 'application/json; charset=utf-8',
             traditional: true,
             data: JSON.stringify(data)
         })
         .done(function( response ) {
             console.log(response);
+            if(response.status == 0){
+                alert('同步成功');
+            }
+            else{
+                alert('同步失败');
+            }
         });
     }
 </script>
