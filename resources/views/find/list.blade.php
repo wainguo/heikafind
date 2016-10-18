@@ -59,7 +59,8 @@
         $.ajax({
             method: "POST",
             url: "/internalTest/article/syncArticle",
-            processData: false,
+            contentType: 'application/json; charset=utf-8', // 很重要
+            traditional: true,
             data: JSON.stringify(data)
         })
         .done(function( response ) {
@@ -78,7 +79,8 @@
         $.ajax({
             method: "POST",
             url: "/internalTest/article/syncArticle",
-            processData: false,
+            contentType: 'application/json; charset=utf-8', // 很重要
+            traditional: true,
             data: JSON.stringify(data)
         })
         .done(function( response ) {
@@ -97,12 +99,13 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
-            processData: false,
-            data: data
+            contentType: 'application/json; charset=utf-8', // 很重要
+            traditional: true,
+            data: JSON.stringify(data)
         })
-                .done(function( response ) {
-                    console.log(response);
-                });
+        .done(function( response ) {
+            console.log(response);
+        });
     }
     function deleteLinks(article) {
         console.log(article);
@@ -116,8 +119,9 @@
         $.ajax({
             method: "POST",
             url: "/internal/article/syncArticle",
-            processData: false,
-            data: data
+            contentType: 'application/json; charset=utf-8', // 很重要
+            traditional: true,
+            data: JSON.stringify(data)
         })
         .done(function( response ) {
             console.log(response);
