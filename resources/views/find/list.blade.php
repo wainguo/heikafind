@@ -85,14 +85,14 @@
             alert('同步失败');
         });
     }
-    function deleteLinksTest(article) {
+    function deleteLinksTest(id, serviceType, detailId) {
         console.log(article);
 
         var data = {
             status: "DELETED",
-            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+article.id+'.html',
-            serviceType: article.category,
-            itemId: article.detailId
+            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+id+'.html',
+            serviceType: serviceType,
+            itemId: detailId
         };
         $.ajax({
             method: "POST",
@@ -114,14 +114,14 @@
             alert('同步失败');
         });
     }
-    function addLinks(article) {
+    function addLinks(id, serviceType, detailId) {
         console.log(article);
 
         var data = {
             status: "NORMAL",
-            articleUrl: 'http://api.m.heika.com/banner/app/v2.8/p/'+article.id+'.html',
-            serviceType: article.category,
-            itemId: article.detailId
+            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+id+'.html',
+            serviceType: serviceType,
+            itemId: detailId
         };
         $.ajax({
             method: "POST",
@@ -143,14 +143,14 @@
             alert('同步失败');
         });
     }
-    function deleteLinks(article) {
+    function deleteLinks(id, serviceType, detailId) {
         console.log(article);
 
         var data = {
             status: "DELETED",
-            articleUrl: 'http://api.m.heika.com/banner/app/v2.8/p/'+article.id+'.html',
-            serviceType: article.category,
-            itemId: article.detailId
+            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+id+'.html',
+            serviceType: serviceType,
+            itemId: detailId
         };
         $.ajax({
             method: "POST",
