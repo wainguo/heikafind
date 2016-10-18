@@ -71,6 +71,9 @@
             else{
                 alert('同步失败');
             }
+        })
+        .fail(function (response) {
+            alert('同步失败');
         });
     }
     function deleteLinksTest(article) {
@@ -97,6 +100,9 @@
             else{
                 alert('同步失败');
             }
+        })
+        .fail(function (response) {
+            alert('同步失败');
         });
     }
     function addLinks(article) {
@@ -123,6 +129,9 @@
             else{
                 alert('同步失败');
             }
+        })
+        .fail(function (response) {
+            alert('同步失败');
         });
     }
     function deleteLinks(article) {
@@ -149,7 +158,10 @@
             else{
                 alert('同步失败');
             }
-        });
+        })
+        .fail(function (response) {
+            alert('同步失败');
+        })
     }
 </script>
 @include('include.footer')
