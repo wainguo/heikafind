@@ -51,7 +51,7 @@
 <script>
 //    function addLinksTest(article) {
     function addLinksTest(id, serviceType, detailId) {
-        console.log(article);
+        console.log(arguments);
 
 //        var data = {
 //            status: "NORMAL",
