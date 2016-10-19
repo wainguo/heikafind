@@ -18,14 +18,10 @@
     <div class="wrap pd-bot">
         <div class="details-box">
             <div class="find-detail">
-                {{--<img src="{{$article->cover}}"/>--}}
                 <div class="title-box">
                     <a id="weixinShare" href="{{$article->shareScheme}}" class="icon-share"></a>
                     <h2>{{$article->title}}</h2>
                     <div class="share clearfix"><span>特派员：黑卡专员</span>
-                        {{--<div id="weixinShare" class="clearfix" style="display: none;">--}}
-                            {{--<a href="{{$article->shareScheme}}" class="color-grey"><img class="ignore-gesture" src="../images/wx_icon.png"/><b>分享至微信</b></a>--}}
-                        {{--</div>--}}
                     </div>
                 </div>
                 <hr>
@@ -36,12 +32,7 @@
                 </div>
             </div>
         </div>
-        {{--<div class="watermark"></div>--}}
 
-    </div>
-
-    <div class="big-pic">
-        <img id="bigImage" src="" alt=""/>
     </div>
 
     <div class="layer-filter"></div>
@@ -51,38 +42,8 @@
     <a id="sureOpenApp" href="{{$jumpScheme}}" style="display: none">打开</a>
 
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="../js/hammer.min.js"></script>
-    <script type="text/javascript" src="../js/hammer-image.js?t={{$rand or ''}}"></script>
     <script type="text/javascript" src="../js/openApp.js?t={{$rand or ''}}"></script>
     <script type="text/javascript">
-        //防止浮层可见时,点击浮层会同时触发浮层下的图片的点击事件
-        $('.big-pic img')[0].addEventListener("touchend", function(e){
-            e.preventDefault();
-        });
-        $('.find-detail').find('img').not('.ignore-gesture').bind("click",function(){
-            var imgH = $(this).height();
-            $('.wrap').css('overflow','hidden');
-            $('.wrap').css('padding-bottom',0);
-            $('.wrap').addClass('filter-blur');
-            $('.big-pic img').attr('src',$(this).attr('src'));
-            $('.big-pic img').css('margin-top',-imgH/2);
-            $('.big-pic').show();
-
-            hammerImage(document.getElementById("bigImage"));
-        });
-        $('.big-pic').bind("click",function(e){
-            console.log(e.target.tagName);
-            if(e.target.tagName != 'IMG'){
-                $(this).hide();
-                $('.wrap').removeClass('filter-blur');
-                $('.wrap').css('height','auto');
-                $('.wrap').css('overflow','auto');
-                $('.wrap').css('padding-bottom','80px');
-            }
-            e.preventDefault();
-            e.stopPropagation();
-        });
-
         $('.once-use').click(function(){
             var scheme = $(this).data('src');
             var jumpScheme = $(this).data('jumpsrc');
