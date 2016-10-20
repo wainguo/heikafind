@@ -80,7 +80,6 @@
         });
     }
     function deleteLinksTest(id, serviceType, detailId) {
-        console.log(article);
 
         var data = {
             status: "DELETED",
@@ -109,7 +108,6 @@
         });
     }
     function addLinks(id, serviceType, detailId) {
-        console.log(article);
 
         var data = {
             status: "NORMAL",
@@ -138,7 +136,6 @@
         });
     }
     function deleteLinks(id, serviceType, detailId) {
-        console.log(article);
 
         var data = {
             status: "DELETED",
