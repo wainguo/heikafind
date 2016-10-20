@@ -53,12 +53,6 @@
     function addLinksTest(id, serviceType, detailId) {
         console.log(arguments);
 
-//        var data = {
-//            status: "NORMAL",
-//            articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+article.id+'.html',
-//            serviceType: article.category,
-//            itemId: article.detailId
-//        };
         var data = {
             status: "NORMAL",
             articleUrl: 'http://172.16.2.113/banner/app/v2.8/p/'+id+'.html',

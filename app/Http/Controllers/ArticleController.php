@@ -54,7 +54,7 @@ class ArticleController extends Controller
                 $scheme = "heika://cakeDetail?id=".$article->detailId;
                 $jumpScheme = 'heika://main?jumpType=cakeDetail&id='.$article->detailId;
                 break;
-            case 'teaRoom':
+            case 'tearoom':
                 $scheme = "heika://highteaDetail?id=".$article->detailId;
                 $jumpScheme = 'heika://main?jumpType=highteaDetail&id='.$article->detailId;
                 break;
@@ -157,7 +157,7 @@ class ArticleController extends Controller
                     $scheme = "heika://cakeDetail?id=".$article->detailId;
                     $jumpScheme = 'heika://main?jumpType=cakeDetail&id='.$article->detailId;
                     break;
-                case 'teaRoom':
+                case 'tearoom':
                     $scheme = "heika://highteaDetail?id=".$article->detailId;
                     $jumpScheme = 'heika://main?jumpType=highteaDetail&id='.$article->detailId;
                     break;
@@ -280,7 +280,7 @@ class ArticleController extends Controller
         $categories = array(
             "restaurant"=>"餐厅订座",
             "bar"=>"酒吧",
-            "teaRoom"=>"茶点",
+            "tearoom"=>"茶点",
             "cake"=>"蛋糕",
             "ticket"=>"票务"
         );
