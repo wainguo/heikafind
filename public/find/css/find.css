@@ -128,11 +128,10 @@ a {
     margin: 0.3rem 1rem;
 }
 .title-box h2{
-    padding-left: 0.9rem;
+    padding: 0 4.05rem 0 0.9rem;
     line-height: 1.5rem;
     font-size: 1rem;
     font-weight: bold;
-    width: 13rem;
 }
 .title-box .share{
     padding-left: 0.9rem;
@@ -176,10 +175,14 @@ a {
 
 .details-box .find-detail p {
     width: 96%;
-    padding: 0.4rem 2% 1rem;
+    padding: 0.2rem 2% 1rem;
     color: #555;
     font-size: 0.85rem;
-    line-height: 1.3rem;
+    line-height: 1.6rem;
+}
+
+.find-detail h2 {
+    padding: 0.4rem 2% 1rem;
 }
 .find-detail p.introduce{
     padding: 0.5rem 0 0.5rem 2%;
@@ -191,7 +194,7 @@ a {
     background: url(../images/btn.png) no-repeat;
     background-size: 100%;
     height: 4rem;
-    margin: 0.4rem 0.2rem 1.4rem;
+    margin: 0.4rem 0.2rem 1.8rem;
 }
 
 .details-box .find-detail img, .image-captioned img {
@@ -223,7 +226,7 @@ figcaption {
 }
 
 .pd-bot {
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
 .filter-blur {
