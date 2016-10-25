@@ -140,7 +140,7 @@ class ArticleController extends Controller
         $countPerPage = 10;
 
         $findpath = public_path('find');
-        $articles = Article::needBuild()->orderBy('created_at', 'desc')->get();
+        $articles = Article::orderBy('created_at', 'desc')->get();
 
         $i = 0;
         $page = 0;
@@ -182,14 +182,18 @@ class ArticleController extends Controller
             }
 
             //process image
-            $this->processImage(basename($article->cover));
+            if($article->needbuild){
+                $this->processImage(basename($article->cover));
+                array_push($buildlogs, '压缩封面图片: '.basename($article->cover));
+
+                $result = $this->processImageFromContent($article->content, 'images');
+                $article->content = $result['content'];
+                array_push($buildlogs, '压缩内容图片: '.json_encode($result['image_urls']));
+            }
+            else {
+                array_push($buildlogs, '此文章图片不需要重新压缩处理');
+            }
             $article->cover = 'images/'.basename($article->cover);
-
-            array_push($buildlogs, '压缩封面图片: '.basename($article->cover));
-
-            $result = $this->processImageFromContent($article->content, 'images');
-            $article->content = $result['content'];
-            array_push($buildlogs, '压缩内容图片: '.json_encode($result['image_urls']));
 
             //文章地址绝对URL,图片地址绝对URL
             $articleUrl = $baseUrl.'p/'.$article->id.".html";
@@ -201,15 +205,10 @@ class ArticleController extends Controller
                 'url' => $articleUrl,
                 'imgUrl' => $coverUrl
             );
-//            $params = http_build_query($query);
+
             $params = http_build_query($query, null, '&', PHP_QUERY_RFC3986);
             $shareScheme = "heika://share?". $params;
 
-//            $shareScheme = "heika://share?title=".$article->title.
-//                "&shareDescription=".$article->description."&url=".$articleUrl."&imgUrl=".$coverUrl;
-
-//            $article->shareScheme =urlencode($shareScheme);
-//            $article->shareScheme = htmlentities($shareScheme, ENT_QUOTES, "UTF-8");
             $article->shareScheme =$shareScheme;
 
             $rand = uniqid();
