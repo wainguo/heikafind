@@ -44,6 +44,15 @@
     <script type="text/javascript" src="../js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="../js/openApp.js?t={{$rand or ''}}"></script>
     <script type="text/javascript">
+        //百度统计
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f362cd569e9aeee07ad0232adabfedec";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
         $('.once-use').click(function(){
             var scheme = $(this).data('src');
             var jumpScheme = $(this).data('jumpsrc');
