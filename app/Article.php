@@ -13,4 +13,8 @@ class Article extends Model
      */
     protected $guarded = ['id'];
 
+    public function scopeNeedBuild($query)
+    {
+        return $query->where('needbuild', 1);
+    }
 }

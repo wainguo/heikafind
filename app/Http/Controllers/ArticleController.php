@@ -140,12 +140,16 @@ class ArticleController extends Controller
         $countPerPage = 10;
 
         $findpath = public_path('find');
-        $articles = Article::orderBy('created_at', 'desc')->get();
+        $articles = Article::needBuild()->orderBy('created_at', 'desc')->get();
 
         $i = 0;
         $page = 0;
         $pagedArticles = array();
         foreach ($articles as $article){
+
+//            $article->needbuid = 0;
+//            $article->save();
+
             $scheme = "heika://refresh";
             $jumpScheme = 'heika://main';
             switch ($article->category){
