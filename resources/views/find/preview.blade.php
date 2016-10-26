@@ -28,7 +28,7 @@
                 <div class="has-distance">
                     <p><span>{{$article->description}}</span></p>
                     {!! $article->content !!}
-                    <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use">立即享用</a>
+                    <a href="javascript:;" data-src="{{$scheme}}" data-jumpsrc="{{$jumpScheme}}" class="once-use"></a>
                 </div>
             </div>
         </div>
