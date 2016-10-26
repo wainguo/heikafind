@@ -32,14 +32,18 @@
                     <a href="{{url('/delete/'.$article->id)}}" onclick="return confirm('删除后无法恢复,确定要删除吗')" class="btn btn-sm btn-danger">删除</a>
                 </td>
                 <td>
+                    @if(env('FIND_FOR_ENV', 'test')=='product')
                     <button onclick='addLinksTest("{{$article->id}}", "{{$article->category}}", "{{$article->detailId}}" )'>添加</button>
                     {{--<button onclick='addLinksTest({{$article}})'>添加</button>--}}
                     <button onclick='deleteLinksTest({{$article}})'>删除</button>
                     {{--<button onclick='deleteLinksTest({{$article}})'>删除</button>--}}
+                    @endif
                 </td>
                 <td>
+                    @if(env('FIND_FOR_ENV', 'test')=='product')
                     <button onclick='addLinks({{$article}})'>添加</button>
                     <button onclick='deleteLinks({{$article}})'>删除</button>
+                    @endif
                 </td>
             </tr>
         @endforeach
