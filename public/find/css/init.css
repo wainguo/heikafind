@@ -1,0 +1,183 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: normal; }
+img{
+    vertical-align:bottom;
+}
+@media (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* 兼容iphone4/4s */ body {  height: auto !important; }  }
+@media screen and (max-device-width: 320px){body{-webkit-text-size-adjust:none}}
+@media screen and (max-device-width: 480px){body{-webkit-text-size-adjust:none}}
+@media only screen and (-webkit-min-device-pixel-ratio: 2){body{-webkit-text-size-adjust:none}}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px){body{-webkit-text-size-adjust:none}}
+body { line-height: 1; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block; }
+
+ul, li {
+    list-style: none; }
+
+blockquote, q {
+    quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after { content:'';  content:none; }
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    display: block;
+    text-decoration: none;
+    background: transparent; }
+
+ins{
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none; }
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold; }
+
+del {
+    text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed; }
+
+input, select {
+    vertical-align: middle; }
+
+body {
+    font-family: Arial, "Microsoft YaHei", "Hiragino Sans GB"; }
+
+.c, .clear {
+    clear: both; }
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    font-size: 0; }
+
+.clearfix {
+    zoom: 1; }
+
+.hidden { display: none; }
+
+.vh { visibility: hidden; }
+
+.tl {  text-align: left; }
+
+.tc {  text-align: center; }
+
+.tr {  text-align: right; }
+
+textarea, input {  outline: none; }
+
+html {  -webkit-text-size-adjust: none; }
+
+[v-cloak] {
+    display: none;
+}
+.layer-filter{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:#000;
+    filter:alpha(opacity=70);
+    opacity:0.7;
+    display: none;
+    z-index:100;
+}
+.tels-pop{
+    display: none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index:100;
+}
+.tels-pop a{
+    width:100%;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    color:#000;
+    font-size:12px;
+    display:block;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+}
+.tels-pop .cancelDailBtn{
+    color:#bb9777;
+}
+.brower-guide{
+    z-index:10000;
+    display: none;
+    width:100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left:70px;
+}
+.brower-guide img{
+    width: 80%;
+    margin: auto;
+}
+.pop-confirm{
+    width:300px;
+    background: #fff;
+    z-index:100;
+    position: fixed;
+    top:180px;
+    left:50%;
+    margin-left:-150px;
+    border-radius: 3px;
+    display: none;
+}
+.pop-confirm p{
+    line-height:24px;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    padding:25px 0;
+}
+.pop-confirm .btn{
+    width:300px;
+    height:44px;
+    border-top:1px solid #e5e5e5;
+}
+.pop-confirm .btn a{
+    width:149px;
+    height:44px;
+    line-height:44px;
+    text-align: center;
+    float:left;
+    color:#0090ff;
+    font-size: 16px;
+    border-right:1px solid #e5e5e5;
+}
+.pop-confirm .btn #sureOpenApp{
+    border-right:none;
+}
