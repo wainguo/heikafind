@@ -431,9 +431,9 @@ class ArticleController extends Controller
             $constraint->aspectRatio();
         })->save($toFile, 60);
 
-        while($image->filesize() > 100*1024) {
-            $image = $image->save($toFile, 60);
-        }
+//        while($image->filesize() > 100*1024) {
+//            $image = $image->save($toFile, 60);
+//        }
 
         return "文件大小:".$image->filesize();
     }
