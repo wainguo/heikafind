@@ -429,7 +429,7 @@ class ArticleController extends Controller
 
         Image::make($file)->resize(640, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($toFile, 80);
+        })->save($toFile, 70);
     }
 
     // build 时,将文章中的图片拷贝出来到p/images下面
