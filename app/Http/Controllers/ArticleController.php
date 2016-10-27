@@ -183,8 +183,8 @@ class ArticleController extends Controller
 
             //process image
             if($article->needbuild){
-                $this->processImage(basename($article->cover));
-                array_push($buildlogs, '压缩封面图片: '.basename($article->cover));
+                $str = $this->processImage(basename($article->cover));
+                array_push($buildlogs, '压缩封面图片: '.basename($article->cover).$str);
 
                 $result = $this->processImageFromContent($article->content, 'images');
                 $article->content = $result['content'];
@@ -421,7 +421,7 @@ class ArticleController extends Controller
     public function processImage($fileName)
     {
         if(empty($fileName)){
-            return;
+            return "";
         }
 
         $file = $this->imageUploadPath.DIRECTORY_SEPARATOR.$fileName;
@@ -434,6 +434,8 @@ class ArticleController extends Controller
         if($image->filesize() > 100*1024) {
             $image->save($toFile, 60);
         }
+
+        return "文件大小:".$image->filesize();
     }
 
     // build 时,将文章中的图片拷贝出来到p/images下面
