@@ -427,9 +427,14 @@ class ArticleController extends Controller
         $file = $this->imageUploadPath.DIRECTORY_SEPARATOR.$fileName;
         $toFile = public_path('find')."/p/images/".$fileName;
 
-        $image = Image::make($file)->resize(480, null, function ($constraint) {
+        $image = Image::make($file);
+        $qulity = 60;
+        if($image->filesize() > 1024*1024){
+            $qulity = 30;
+        }
+        $image->resize(480, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($toFile, 60);
+        })->save($toFile, $qulity);
 
 //        while($image->filesize() > 100*1024) {
 //            $image = $image->save($toFile, 60);
