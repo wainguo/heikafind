@@ -427,9 +427,9 @@ class ArticleController extends Controller
         $file = $this->imageUploadPath.DIRECTORY_SEPARATOR.$fileName;
         $toFile = public_path('find')."/p/images/".$fileName;
 
-        Image::make($file)->resize(640, null, function ($constraint) {
+        Image::make($file)->resize(480, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save($toFile, 70);
+        })->save($toFile, 60);
     }
 
     // build 时,将文章中的图片拷贝出来到p/images下面
